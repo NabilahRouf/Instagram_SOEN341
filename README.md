@@ -34,7 +34,7 @@ Javascript, HTML and CSS
 ## Contributors
 
 - Liborio Ciccarello (liborioc_1) 40095519 
-- Muhammad Al Sagh (melsagh) 40081836
+- Mohamed Elsagh (melsagh) 40081836
 - Nabilah Rouf (NabilahRouf) 40095893
 - Salma Elmahallawy (Salma-Elmahallawy) 40091224
 - Tarek El Dick (TarekElDick) 40110697
