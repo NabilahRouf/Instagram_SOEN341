@@ -5,7 +5,7 @@
 
 The objective of this project is to become familiar with software development process through developing a web application for Instagram.
 Social media users will be able to engage with their friends and followers by navigating through the web application's home and profile page. Users can upload pictures to share with their followers and scroll through pictures uploaded by other users they are following as well.
-In this particular case, Agile Development (4 Sprints) will be the software development methodology used to implement this web application.
+In tStart-uphis particular case, Agile Development (4 Sprints) will be the software development methodology used to implement this web application.
 
 ## Description
 
