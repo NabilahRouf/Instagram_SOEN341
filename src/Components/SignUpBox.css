@@ -1,16 +1,13 @@
-.boxColor {
-    background-color: white;
-}
-
-.signUpTextLayout {
+.textHyperlink{
     color: rgb(61, 59, 59);
     margin-left: 90px;
     margin-right: 10px;
     margin-top:20px;
 }
 
-.signUpHyperlink {
+.signInHyperlink {
     color: rgb(114, 165, 231);
     font-weight: bold;
     margin-top:20px;
 }
+
