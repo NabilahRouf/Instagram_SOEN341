@@ -1,16 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import ImageGrid from '../Components/ImageGrid'
+import Modal from '../Components/Modal'
+import Header from '../Components/Header'
+import './Profile.css';
 
 const ProfilePage = () => {
     document.title ='Fakestagram - Profiles';
+    const [selectedImg, setSelectedImg] = useState(null);
+
     return(
         <div>
-            <h1>Users Page</h1>
-            <Link to = "/feed">
-                <button type = "button">
-                    Feed
-                </button>
-            </Link>
+            <div>
+                <Header/>
+            </div>
+            <div className="profileHeader">
+                Profile
+            </div>
+            <div>
+                <ImageGrid setSelectedImg={setSelectedImg}/>
+                {selectedImg && <Modal selectedImg = {selectedImg} setSelectedImg={setSelectedImg}/>}
+            </div>
         </div>
     );
 

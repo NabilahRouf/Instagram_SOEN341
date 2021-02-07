@@ -1,6 +1,6 @@
 import React,{useCallback,useContext} from 'react';
 import {withRouter,Redirect} from "react-router";
-import fire from '../firebase';
+import {auth, firebaseStorage, database, timestamp} from "../firebase"
 import SignInBox from '../Components/SignInBox';
 import {AuthenticationContext} from "../Authenticated";
 
@@ -13,7 +13,7 @@ const SignInPage =()=> {
     const{email,password} = event.target.elements;
     
     
-        await fire.auth().signInWithEmailAndPassword(email.value,password.value).catch((error)=>alert(error.message));   
+        await auth.signInWithEmailAndPassword(email.value,password.value).catch((error)=>alert(error.message));   
         
     },[]);
 
