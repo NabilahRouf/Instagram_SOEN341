@@ -1,6 +1,6 @@
 import firebase from "firebase";
 
-const firebaseApplication = firebase.initializeApp({
+const fire= firebase.initializeApp({
     apiKey: "AIzaSyCQTsyNO2zy2esFl8XPvVnB0JWZ8tKwbxE",
     authDomain: "instagram-soen341.firebaseapp.com",
     databaseURL: "https://instagram-soen341-default-rtdb.firebaseio.com",
@@ -13,8 +13,5 @@ const firebaseApplication = firebase.initializeApp({
 });
 
 //getting access to firebase services
-const database = firebase.firestore(); //database
-const authentication = firebase.auth(); //signup and signin 
-const firebaseStorage = firebase.storage();  //uploads
 
-  export {database, authentication, firebaseStorage};
+export default fire;
