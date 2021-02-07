@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import fire from './firebase';
+import {auth} from "./firebase"
 import { CircularProgress } from '@material-ui/core';
 import { makeStyles} from '@material-ui/core/styles';
 
@@ -23,7 +23,7 @@ export const AuthenticationProvider=({children}) => {
     const [loading,setLoading] = useState(true);
 
     useEffect(() =>{
-        fire.auth().onAuthStateChanged((user)=> 
+        auth.onAuthStateChanged((user)=> 
         {
             setUser(user)
             setLoading(false)

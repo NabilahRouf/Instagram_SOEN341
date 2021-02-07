@@ -1,6 +1,6 @@
 import React,{useCallback,useContext} from 'react';
 import {withRouter,Redirect} from "react-router";
-import fire from '../firebase';
+import {auth} from "../firebase"
 import SignUpBox from '../Components/SignUpBox';
 import {AuthenticationContext} from "../Authenticated";
 
@@ -15,7 +15,7 @@ const SignUpPage =()=> {
     console.log(username.value,email.value,password.value);
         
     
-         await fire.auth().createUserWithEmailAndPassword(email.value,password.value).then((authenticatedUser) =>  {
+         await auth.createUserWithEmailAndPassword(email.value,password.value).then((authenticatedUser) =>  {
             return authenticatedUser.user.updateProfile({
             displayName: username.value
             })
