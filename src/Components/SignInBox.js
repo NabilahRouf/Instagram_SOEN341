@@ -10,8 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import './SignInBox.css';
-import './SignUpBox.css'
-import { AddToPhotos } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -36,9 +34,10 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
   
-  export default function SignIn() {
+  export default function SignIn(props) {
+
     const classes = useStyles();
-  
+    
     return (
       <Container className= "boxColor" component="main" maxWidth="xs">
         <CssBaseline />
@@ -49,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form onSubmit={props.handleLogin} className={classes.form} noValidate>
             <TextField
               className = "textField-setup"
               variant="outlined"
@@ -59,21 +58,20 @@ const useStyles = makeStyles((theme) => ({
               id="email"
               label="Email Address"
               name="email"
-              autoComplete="email"
+              type= "text"
               autoFocus
+
             />
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
+              id="password"
               name="password"
               label="Password"
               type="password"
-              id="password"
-              autoComplete="current-password"
             />
-            <Link to ="/feed">
             <Button
               type="submit"
               fullWidth
@@ -83,7 +81,6 @@ const useStyles = makeStyles((theme) => ({
             >
               Sign In
             </Button>
-            </Link>
             <Grid container>
             <div className = "signUpTextLayout" variant="body2">
                 Don't have an Account?

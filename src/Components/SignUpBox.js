@@ -7,10 +7,9 @@ import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import './SignUpBox.css'
-import { PlayCircleFilledWhite } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -33,9 +32,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
   const classes = useStyles();
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -46,7 +44,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={props.handleSignUp} className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
             </Grid>
@@ -58,7 +56,6 @@ export default function SignUp() {
                 id="username"
                 label="Username"
                 name="username"
-                autoComplete="uname"
               />
             </Grid>
             <Grid item xs={12}>
@@ -69,7 +66,6 @@ export default function SignUp() {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
               />
             </Grid>
             <Grid item xs={12}>
@@ -77,32 +73,30 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
+                id="password"
                 name="password"
                 label="Password"
                 type="password"
-                id="password"
-                autoComplete="current-password"
               />
             </Grid>
             <Grid item xs={12}>
             </Grid>
           </Grid>
-          <Link to = "/feed">
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+          
           >
             Sign Up
           </Button>
-          </Link>
           <Grid container>
             <div className = "textHyperlink">
                 Already have an Account?
             </div>
-              <Link to = "/" className = "signInHyperlink"> Sign In</Link>
+              <Link to = "/login" className = "signInHyperlink"> Sign In</Link>
             </Grid>
         </form>
       </div>
