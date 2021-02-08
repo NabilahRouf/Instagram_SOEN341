@@ -96,7 +96,7 @@ export default function SignUp(props) {
             <div className = "textHyperlink">
                 Already have an Account?
             </div>
-              <Link to = "/login" className = "signInHyperlink"> Sign In</Link>
+              <Link to = "/" className = "signInHyperlink"> Sign In</Link>
             </Grid>
         </form>
       </div>
