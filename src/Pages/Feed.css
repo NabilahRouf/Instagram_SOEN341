@@ -1,0 +1,15 @@
+.feedHeader {
+    font-size: 4em;
+    color: rgb(231, 171, 181);
+    text-align: center;
+    padding: 70px 0;
+    background: rgb(235, 225, 225);
+
+}
+
+.root {
+    min-height: 150vh;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20em;
+}
