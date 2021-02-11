@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { AppBar, IconButton , Toolbar, InputBase} from '@material-ui/core';
+import { AppBar, IconButton , Toolbar, InputBase, Collapse} from '@material-ui/core';
 
 
 import SearchIcon from '@material-ui/icons/Search';
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme)=>({
 
     // the appbar itself, without the components. 
     appbar:{
-        background: '#ffff',     // 'none' to remove the background color, so the website background shows.
+        background: '#ffffff',     // 'none' to remove the background color, so the website background shows.
     },
 
     // the appbar wrapper that can be used to align and fix wdith of toolbar. 
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme)=>({
 
     search: {
         position: 'relative',
-        paddingRight: 450,
+        //paddingRight: 450,   Search bar on the right is nicer
         borderRadius: theme.shape.borderRadius,
         backgroundColor: fade(theme.palette.common.white, 0.15),
         '&:hover': { 
@@ -101,21 +101,21 @@ const useStyles = makeStyles((theme)=>({
 export default function Header(){
     const classes = useStyles();
 
-    // // used for the collapse effect. 
-    // const [checked, setChecked] = useState(false);
-    // useEffect(()=>{
-    //     setChecked(true);
-    // },[]);
+    // // used for the collapse effect on Header once the site opens.  
+     const [checked, setChecked] = useState(false);
+    useEffect(()=>{
+        setChecked(true);
+    },[]);
 
     return (
     <div className = {classes.root}> 
         <AppBar className = {classes.appbar} elevation={0}>
-        {/* <Collapse in = {checked} {...(checked ? { timeout: 2000 } : {})} 
-        collapseHeight={50}> */}
+        <Collapse in = {checked} {...(checked ? { timeout: 2000 } : {})}
+        collapseHeight={50}> 
 
             <Toolbar className = {classes.Toolbar}>
                 
-                <hi className = {classes.appbarTitle}>Fake<span className = {classes.colorTitle}> Instagram</span> </hi>
+                <hi className = {classes.appbarTitle}>Fake<span className = {classes.colorTitle}>stagram</span> </hi>
 
                 <div className={classes.search}> 
                     <div className={classes.searchIcon}> 
@@ -135,12 +135,12 @@ export default function Header(){
                     </Link>
                 </IconButton>
                 <IconButton>
-                    <Link to = "/feed/profile">
+                    <Link to = "/profile"> {/* I changed from /feed/profile to /profile TD */}
                         <AccountCircleIcon className= {classes.accountIcon}></AccountCircleIcon>
                     </Link>
                 </IconButton>
             </Toolbar>
-        {/* </Collapse>  */}
+        </Collapse>  
         </AppBar>
     </div>
     );

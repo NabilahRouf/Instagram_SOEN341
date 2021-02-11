@@ -13,6 +13,7 @@ const ProfilePage = () => {
             <div>
                 <Header/>
             </div>
+            
             <div className="profileHeader">
                 Profile
             </div>
