@@ -1,9 +1,7 @@
 import React,{useState,useContext,useEffect} from 'react';
-import useFirestore from '../Hooks/useFirestore';
 import {database} from '../firebase';
 import './ImageGrid.css';
 import {AuthenticationContext} from "../Authenticated";
-import PostLayout from './PostLayout';
 
 const ImageGrid = ({setSelectedImg}) => {
 
@@ -17,9 +15,9 @@ const ImageGrid = ({setSelectedImg}) => {
             setDocs(snapshot.docs.map(doc=>doc.data()))
         
     })
-    },[])
+    })
     
-const [initial,setInitial]=useState("TD");
+// const [initial,setInitial]=useState("TD");
     return(
         
          <div className = "imgGrid">

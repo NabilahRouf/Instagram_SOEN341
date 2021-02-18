@@ -30,7 +30,7 @@ const SignInPage =()=> {
         <video src="/videos/Clouds.mp4" autoPlay loop muted />
         <div className= "hero-content">
             <div className="logo">
-                <img src="/images/logo4.png"/>
+                <img alt="stratusLogo" src="/images/logo4.png"/>
             </div>
             <SignInBox 
             handleLogin={handleLogin}

@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { AppBar, IconButton , Toolbar, InputBase} from '@material-ui/core';
+import { AppBar, IconButton , Toolbar} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -110,10 +110,10 @@ export default function Header(){
         })
         setUsername(value);  
       }
-      const [checked, setChecked] = useState(false);
-      useEffect(()=>{
-         setChecked(true);
-     },[]);
+    //   const [checked, setChecked] = useState(false);
+    //   useEffect(()=>{
+    //      setChecked(true);
+    //  },[]);
  
 
       //load all users

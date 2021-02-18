@@ -7,7 +7,7 @@ const useFirestore = (collection) => {
     const{user} = useContext(AuthenticationContext);
 console.log(collection);
     useEffect(()=> {
-        const unsub = database.collection(collection)
+        database.collection(collection)
             .where('uid','==',user.uid)
             .orderBy('createdAt', 'desc')
             .get()
