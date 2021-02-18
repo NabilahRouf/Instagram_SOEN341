@@ -1,5 +1,5 @@
 import React,{useCallback,useContext} from 'react';
-import {withRouter,Redirect} from "react-router";
+import {Redirect} from "react-router";
 import {auth,database} from '../firebase';
 import SignUpBox from '../Components/SignUpBox';
 import {AuthenticationContext} from "../Authenticated";
@@ -30,10 +30,11 @@ const SignUpPage =()=> {
             console.log(newUsername+"line 30");
         await auth.createUserWithEmailAndPassword(email.value,password.value).then((authenticatedUser) =>  {
             database.collection('users').doc(authenticatedUser.user.uid).set({
-                followerCount:0,
-                following:[],
+                followersCount:0,
+                //followers: [],
+                //following:[],
                 followingCount:0,
-                myPosts:[],
+                //myPosts:[],
                 uid:authenticatedUser.user.uid,
                 username: username.value,
             
@@ -64,4 +65,4 @@ const SignUpPage =()=> {
     
 };
 
-export default withRouter(SignUpPage);
+export default SignUpPage;

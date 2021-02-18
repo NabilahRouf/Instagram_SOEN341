@@ -20,4 +20,4 @@ const auth = firebase.auth(); //signup and signin
 const firebaseStorage = firebase.storage();  //uploads
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
-export  {auth, database, firebaseStorage,timestamp};
+export  {fire, auth, database, firebaseStorage,timestamp};

@@ -1,6 +1,6 @@
 import React,{useCallback,useContext} from 'react';
-import {withRouter,Redirect} from "react-router";
-import {auth, firebaseStorage, database, timestamp} from "../firebase"
+import {Redirect} from "react-router";
+import {auth} from "../firebase"
 import SignInBox from '../Components/SignInBox';
 import {AuthenticationContext} from "../Authenticated";
 
@@ -29,7 +29,7 @@ const SignInPage =()=> {
             <div className='hero-container'>
                 <video src="/videos/Forest.mp4" autoPlay loop muted />
                 <div className= "hero-content">
-                    <h1 className="hero-header"> Picture Perfect </h1>
+                    <h1 className="hero-header"> Fakestagram </h1>
                     <SignInBox 
                     handleLogin={handleLogin}
                     ></SignInBox>
@@ -38,4 +38,4 @@ const SignInPage =()=> {
     );
     
 };
-export default withRouter(SignInPage);
+export default SignInPage;
