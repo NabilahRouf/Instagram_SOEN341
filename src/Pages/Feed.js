@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {auth} from "../firebase"
-import UploadedForm from '../Components/UploadedForm';
 import Header from '../Components/Header'
 import './Feed.css';
 import PostLayout from '../Components/PostLayout';
