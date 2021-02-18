@@ -5,7 +5,7 @@ import { AppBar, IconButton , Toolbar} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import UploadedForm from './UploadedForm'
+import UploadModal from '../Components/UploadModal';
 import {database} from '../firebase'
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme)=>({
 
     search: {
         position: 'relative',
-        paddingRight: 450,
+        // paddingRight: 450,
         borderRadius: theme.shape.borderRadius,
         backgroundColor: fade(theme.palette.common.white, 0.15),
         '&:hover': { 
@@ -110,7 +110,11 @@ export default function Header(){
         })
         setUsername(value);  
       }
-      
+    //   const [checked, setChecked] = useState(false);
+    //   useEffect(()=>{
+    //      setChecked(true);
+    //  },[]);
+ 
 
       //load all users
     useEffect(() => {
@@ -171,9 +175,9 @@ export default function Header(){
                 </div>
                  </div>
                 </div>
-                <IconButton type="submit">
-                    <UploadedForm/>
-                </IconButton> 
+                <div>
+                    <UploadModal/>
+                </div> 
                 <IconButton >
                     <Link to = "/feed">
                         <HomeIcon className= {classes.homeIcon}></HomeIcon>

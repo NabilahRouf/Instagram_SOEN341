@@ -8,7 +8,7 @@ import {database} from "../firebase"
 
 
 const ProfilePage = () => {
-    document.title ='Fakestagram - My Profile';
+    document.title ='Stratus - My Profile';
     const [selectedImg, setSelectedImg] = useState(null);
     const{user} = useContext(AuthenticationContext);
     

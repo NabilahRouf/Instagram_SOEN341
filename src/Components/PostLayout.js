@@ -10,7 +10,7 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {grey} from '@material-ui/core/colors';
+import { blue} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatIcon from '@material-ui/icons/Chat';
 import ShareIcon from '@material-ui/icons/Share';
@@ -44,12 +44,12 @@ const useStyles = makeStyles((theme) => ({
   },
 
   avatar: {
-    backgroundColor: grey, 
+    backgroundColor: blue[500], 
   },
 }));
 
 
-export default function PostLayout( {post} ) {
+export default function PostLayout({profileInitials, timestamp,username, imageURL, caption, comment}) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -62,15 +62,15 @@ export default function PostLayout( {post} ) {
 <Card className={classes.root}>
 
 <CardHeader
-avatar={ <Avatar aria-label="Avatar" className={classes.avatar}> {post.profileInitials /* this is where I get the initials from TD*/}</Avatar> }
+avatar={ <Avatar aria-label="Avatar" className={classes.avatar}> {profileInitials /* this is where I get the initials from TD*/}</Avatar> }
 action={ <IconButton aria-label=" settings"> <MoreVertIcon /> </IconButton> }
-title= {post.profileName}
-subheader= {post.date /* this is where I get the date from TD*/}
+title= {username}
+subheader= {timestamp /* this is where I get the date from TD*/}
 />
 
 <CardMedia
     className={classes.media}
-    image= {post.imageURL /* no picture in the asset*/}
+    image= {imageURL /* no picture in the asset*/}
     title="Picture media"
 />
 
@@ -78,7 +78,7 @@ subheader= {post.date /* this is where I get the date from TD*/}
     
     <Typography variant="body2" color="textSecondary" component="p">
     
-    {post.caption /* this is where I get the caption from TD*/}
+    {caption /* this is where I get the caption from TD*/}
     
     </Typography>
 
@@ -114,7 +114,7 @@ subheader= {post.date /* this is where I get the date from TD*/}
   <Typography >
     
 
-    {post.comment /* this is where I get the comment from TD*/}
+    {comment /* this is where I get the comment from TD*/}
     
   </Typography>
 

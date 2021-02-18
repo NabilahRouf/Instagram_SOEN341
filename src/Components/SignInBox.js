@@ -9,6 +9,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import './SignInBox.css';
 
 
@@ -19,15 +21,15 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: theme.spacing(0.1),
+      padding: theme.spacing(0),
       
     },
     avatar: {
       margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
+      backgroundColor:'#e6b3ae',
     },
     form: {
-      width: '100%', // Fix IE 11 issue.
+      width: '90%', // Fix IE 11 issue.
       marginTop: theme.spacing(1),
     },
     submit: {
@@ -35,19 +37,39 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
   
+  const style = {
+    color: '#f5f5f5',
+  };
+
+  const text = {
+    color: '#525252',
+  }
+
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#e6b3ae',
+      },
+      secondary: {
+        main: '#858585',
+      },
+    },
+  });
+  
   export default function SignIn(props) {
 
     const classes = useStyles();
     
     return (
+      <ThemeProvider theme= {theme}>
       <Container className= "boxColor" component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
+          <Typography component="h1" variant="h5" style={text}>
+            Sign In
           </Typography>
           <form onSubmit={props.handleLogin} className={classes.form} noValidate>
             <TextField
@@ -77,13 +99,14 @@ const useStyles = makeStyles((theme) => ({
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
+              color= "primary"
               className={classes.submit}
+              style={style}
             >
               Sign In
             </Button>
             <Grid container>
-            <div className = "signUpTextLayout" variant="body2">
+            <div className = "signUpTextLayout" variant="body2" style={text}>
                 Don't have an Account?
             </div>
              <Link to = "/signup" className = "signUpHyperlink" variant="body2"> Sign Up</Link>
@@ -91,6 +114,7 @@ const useStyles = makeStyles((theme) => ({
           </form>
         </div>
       </Container>
+      </ThemeProvider>
     );
   }
 

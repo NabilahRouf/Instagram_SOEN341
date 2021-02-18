@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ErrorPage = () => {
-    document.title ='Fakestagram - Error 404';
+    document.title ='Stratus - Error 404';
     return(
         
         <div>

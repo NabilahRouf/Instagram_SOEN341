@@ -5,7 +5,7 @@ import SignUpBox from '../Components/SignUpBox';
 import {AuthenticationContext} from "../Authenticated";
 
 const SignUpPage =()=> {
-    document.title ='Fakestagram - Sign Up';
+    document.title ='Stratus - Sign Up';
     const handleSignUp = useCallback(async event => {
     
     event.preventDefault();
@@ -55,11 +55,14 @@ const SignUpPage =()=> {
     }
 
     return(     
-      <>
-       <SignUpBox  
+        <div className='hero-container'>
+        <video src="/videos/Clouds.mp4" autoPlay loop muted />
+        <div className= "hero-content">
+        <SignUpBox  
         handleSignUp={handleSignUp}
         ></SignUpBox>
-       </>
+        </div>
+        </div> 
     
     );
     

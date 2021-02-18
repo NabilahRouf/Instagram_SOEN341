@@ -1,22 +1,44 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect,useContext} from 'react';
 import {database} from "../firebase"
+import {AuthenticationContext} from "../Authenticated";
 
 const useFirestore = (collection) => {
     const[docs, setDocs] = useState([]);
-
+    const{user} = useContext(AuthenticationContext);
+console.log(collection);
     useEffect(()=> {
-        const unsub = database.collection(collection)
-        
+        database.collection(collection)
+            .where('uid','==',user.uid)
             .orderBy('createdAt', 'desc')
-            .onSnapshot((snap)=> {
+            .get()
+            .then((snapshot)=>{
+                let documents = [];
+                snapshot.forEach((doc)=>{
+                    if(doc.data().uid===user.uid){
+                        const post={
+                            caption: doc.data().caption,
+                            imageUrl: doc.data().imageUrl,
+                            timestamp: doc.data().timestamp,
+                            uid: doc.data().uid,
+                            username: doc.data().username,
+                        }
+                        documents.push(post);
+                    }
+
+                });
+                    setDocs(documents);
+            })
+            /*.onSnapshot((snap)=> {
                 let documents = [];
                 snap.forEach(doc => {
-                    documents.push({...doc.data(), id: doc.id})
+                    console.log("hello");
+                    // if(doc.data().uid===user.uid)
+                    documents.push({imageUrl: doc.data().imageUrl, id: doc.id});
                 });
                 setDocs(documents);
-            });
+            });*/
 
-            return () => unsub();
+            //return () => unsub();
 
     }, [collection])
 
