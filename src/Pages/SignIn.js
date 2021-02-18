@@ -5,7 +5,7 @@ import SignInBox from '../Components/SignInBox';
 import {AuthenticationContext} from "../Authenticated";
 
 const SignInPage =()=> {
-    document.title ='Fakestagram - Sign In';
+    document.title ='Stratus - Sign In';
 
     const handleLogin = useCallback(async event => {
 
@@ -26,15 +26,17 @@ const SignInPage =()=> {
 
     return(
         
-            <div className='hero-container'>
-                <video src="/videos/Forest.mp4" autoPlay loop muted />
-                <div className= "hero-content">
-                    <h1 className="hero-header"> Fakestagram </h1>
-                    <SignInBox 
-                    handleLogin={handleLogin}
-                    ></SignInBox>
-                </div>
-            </div>  
+        <div className='hero-container'>
+        <video src="/videos/Clouds.mp4" autoPlay loop muted />
+        <div className= "hero-content">
+            <div className="logo">
+                <img src="/images/logo4.png"/>
+            </div>
+            <SignInBox 
+            handleLogin={handleLogin}
+            ></SignInBox>
+        </div>
+        </div>  
     );
     
 };

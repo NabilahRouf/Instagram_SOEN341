@@ -9,7 +9,7 @@ import FollowButton from '../Components/FollowButton';
 
 const ProfilePage = (props) => {
     
-    document.title ='Fakestagram - Profiles';
+    document.title ='Stratus - Profiles';
     const [selectedImg, setSelectedImg] = useState(null);
     const[selectedUser,setSelectedUser] = useState(null);
     const{user} = useContext(AuthenticationContext);

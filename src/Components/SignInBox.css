@@ -1,10 +1,12 @@
 .boxColor {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 70px;
+
 }
 
 .signUpTextLayout {
     color: rgb(61, 59, 59);
-    margin-left: 90px;
+    margin-left: 70px;
     margin-right: 10px;
     margin-top:20px;
 }
@@ -73,4 +75,13 @@ video {
 .signIn-form {
     margin-top: 100px;
 
+}
+
+.signInText {
+    color: grey;
+}
+
+.logo {
+    padding-right: 11em;
+    padding-top:3em;
 }
