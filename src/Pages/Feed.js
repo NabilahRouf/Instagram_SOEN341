@@ -7,7 +7,7 @@ import posts from '../static/posts';
 
 const MainPage =() =>{
 
-    document.title ='Stratus- My Feed';  
+    document.title ='Stratus - Home';  
         
     return(
         <div>

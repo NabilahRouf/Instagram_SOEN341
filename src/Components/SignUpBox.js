@@ -15,23 +15,23 @@ import './SignUpBox.css'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
 
   },
   avatar: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(0),
     backgroundColor: '#e6b3ae',
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
 
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(3, 0, 1),
   },
 }));
 
@@ -54,7 +54,7 @@ export default function SignUp(props) {
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
-    <Container component="main" maxWidth="xs">
+    <Container className = "boxColor" component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

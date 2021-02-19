@@ -1,8 +1,7 @@
 import React,{useState,useEffect,useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { AppBar, IconButton , Toolbar} from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import { AppBar, IconButton , ThemeProvider, Toolbar} from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import UploadModal from '../Components/UploadModal';
@@ -10,6 +9,7 @@ import {database} from '../firebase'
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import {Redirect} from "react-router-dom";
+import { createMuiTheme, withStyles } from '@material-ui/core/styles';
 import {AuthenticationContext} from "../Authenticated";
 
 const useStyles = makeStyles((theme)=>({
@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme)=>({
         alignItems: 'center',
         height: '10vh',
     },
-
     // the appbar itself, without the components. 
     appbar:{
         background: '#ffffff',     // 'none' to remove the background color, so the website background shows.
@@ -52,7 +51,7 @@ const useStyles = makeStyles((theme)=>({
 
     search: {
         position: 'relative',
-        // paddingRight: 450,
+        paddingRight: 180,
         borderRadius: theme.shape.borderRadius,
         backgroundColor: fade(theme.palette.common.white, 0.15),
         '&:hover': { 
@@ -81,6 +80,15 @@ const useStyles = makeStyles((theme)=>({
     
       },
 
+      logo: {
+        width: 110,
+        height:50,
+      },
+
+    textfieldCSS : {
+        marginBottom: 15,
+    },
+
       inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
@@ -98,6 +106,30 @@ const useStyles = makeStyles((theme)=>({
       },
 
 }));
+
+const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#e6b3ae',
+      },
+      secondary: {
+        main: '#858585',
+      },
+    },
+  });
+
+  const CssTextField = withStyles({
+    root: {
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: '#ffffff',
+        },
+        '&:hover fieldset': {
+            borderColor: '#e6b3ae',
+          },
+      }
+    }
+  })(TextField);
 
 export default function Header(){
     const classes = useStyles(); 
@@ -149,7 +181,10 @@ export default function Header(){
 
             <Toolbar  className = {classes.Toolbar}>
                 
-                <h1 className = {classes.appbarTitle}>Fake<span className = {classes.colorTitle}> Instagram</span> </h1>
+                {/* <h1 className = {classes.appbarTitle}>Fake<span className = {classes.colorTitle}> Instagram</span> </h1> */}
+                <h1>
+                <img alt="stratusLogo" className={classes.logo} src="/images/logo4.png"/>
+                </h1>
                 <div style ={{display: "flex"}}>
                 <Autocomplete
                     classes={{ root: classes.inputRoot, input: classes.inputInput }}
@@ -159,20 +194,23 @@ export default function Header(){
                     options={users.map((option) => option.username)}
                     onChange={onSelectChange}
                     renderInput={(params) => (
-                    <TextField
-                    {...params}
-                        label="Search Profile ...."
-                        margin="normal"
-                        variant="outlined"
-                        fullWidth
-                        InputProps={{ ...params.InputProps, type: "search" }}
-                    />
+                    <ThemeProvider theme={theme}>
+                        <CssTextField
+                        {...params}
+                            label="Search Profile"
+                            margin="normal"
+                            variant="outlined"
+                            size="small"
+                            color="primary"
+                            className = {classes.textfieldCSS}
+                            fullWidth
+                            // InputProps={{ ...params.InputProps, type: "search" }}
+                        />
+                    </ThemeProvider>
+
                     )}
                  />
                   <div className={classes.search}> 
-                    <div className={classes.searchIcon}> 
-                        <SearchIcon/> 
-                </div>
                  </div>
                 </div>
                 <div>

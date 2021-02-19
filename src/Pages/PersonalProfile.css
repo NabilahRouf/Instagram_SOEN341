@@ -1,0 +1,25 @@
+.profilePic {
+    height:10em;
+    width: 10em;
+    padding-top: 2em;
+    padding-left: 400px;
+}
+
+.profileInfo {
+    display:flex;
+}
+
+.username {
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-top: 3.5em;
+    padding-left: 3.8em;
+}
+
+.follow {
+    padding-top:2em;
+    padding-left:4.5em;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}

@@ -10,7 +10,7 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { blue} from '@material-ui/core/colors';
+import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatIcon from '@material-ui/icons/Chat';
 import ShareIcon from '@material-ui/icons/Share';
@@ -20,8 +20,6 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const useStyles = makeStyles((theme) => ({
   cardPadding: {
     paddingTop: 40,
-
-
   },
   
     root: {
@@ -44,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   avatar: {
-    backgroundColor: blue[500], 
+    backgroundColor: red[100], 
   },
 }));
 

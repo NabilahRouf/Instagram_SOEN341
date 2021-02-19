@@ -5,7 +5,7 @@ import Header from '../Components/Header'
 import './Profile.css';
 import {AuthenticationContext} from "../Authenticated";
 import {database} from "../firebase"
-
+import './PersonalProfile.css';
 
 const ProfilePage = () => {
     document.title ='Stratus - My Profile';
@@ -32,13 +32,15 @@ const ProfilePage = () => {
             <div>
                 <Header/>
             </div>
-            <div className="profileHeader">
-                My Profile
-            </div>
-            <div>                          
-                <div>User: {name}</div>
-                <div>Followers: {userFollowersCount} </div>
-                <div> Following: {userFollowingCount} </div>
+            <div className="profileInfo">  
+                <img alt="profilePic" className="profilePic" src="/images/circle.png"/>  
+                <div>
+                <div className = "username"> {name} </div>
+                    <div className ="follow">
+                        Followers: {userFollowersCount} &nbsp;
+                        Following: {userFollowingCount}
+                    </div>
+                </div>                       
             </div>
             <div>
                 <ImageGrid setSelectedImg={setSelectedImg}/>
