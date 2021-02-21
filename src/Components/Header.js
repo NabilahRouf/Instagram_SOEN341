@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { AppBar, Container, IconButton , ThemeProvider, Toolbar} from '@material-ui/core';
+import { AppBar, IconButton , ThemeProvider, Toolbar} from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import UploadModal from '../Components/UploadModal';
@@ -141,9 +141,9 @@ export default function Header(){
     const[username, setUsername]=useState('');
     const{user} = useContext(AuthenticationContext);
     const onSelectChange = (event,value) => {
-      //  database.collection('selectedUser').doc(user.uid).set({
-      //       selectedUser: value
-      //   })
+    database.collection('selectedUser').doc(user.uid).set({
+      selectedUser: value
+ })
         setUsername(value);  
       }
     //   const [checked, setChecked] = useState(false);
@@ -151,7 +151,7 @@ export default function Header(){
     //      setChecked(true);
     //  },[]);
  
-/*
+
       //load all users
     useEffect(() => {
          database.collection("users").get().then((snapshot) => {
@@ -171,7 +171,7 @@ export default function Header(){
         });
 
          });
- */
+ 
          if(username){
             return (
             <Redirect  to="/profile"/>
