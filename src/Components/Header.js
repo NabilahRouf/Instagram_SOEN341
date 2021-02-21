@@ -20,16 +20,20 @@ const useStyles = makeStyles((theme)=>({
         justifyContent: 'center',
         alignItems: 'center',
         height: '10vh',
+        
     },
     // the appbar itself, without the components. 
     appbar:{
         background: '#ffffff',     // 'none' to remove the background color, so the website background shows.
+        borderBottom: '1px solid lightgray',
+        
     },
 
     // the appbar wrapper that can be used to align and fix wdith of toolbar. 
     Toolbar: {
         width: '80%',           // width while centered
-        margin: '0 auto',       // to make the toolbar centered. 
+        margin: '0 auto',       // to make the toolbar centered.
+
     },
 
     // The title on the appbar top of screen.
@@ -137,9 +141,9 @@ export default function Header(){
     const[username, setUsername]=useState('');
     const{user} = useContext(AuthenticationContext);
     const onSelectChange = (event,value) => {
-       database.collection('selectedUser').doc(user.uid).set({
-            selectedUser: value
-        })
+    database.collection('selectedUser').doc(user.uid).set({
+      selectedUser: value
+ })
         setUsername(value);  
       }
     //   const [checked, setChecked] = useState(false);
@@ -167,7 +171,7 @@ export default function Header(){
         });
 
          });
-        
+ 
          if(username){
             return (
             <Redirect  to="/profile"/>

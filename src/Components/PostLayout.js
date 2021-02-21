@@ -1,125 +1,30 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ChatIcon from '@material-ui/icons/Chat';
-import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import React from 'react'
+import './PostLayout.css';
+import Avatar from "@material-ui/core/Avatar";
 
-
-const useStyles = makeStyles((theme) => ({
-  cardPadding: {
-    paddingTop: 40,
-  },
-  
-    root: {
-    maxWidth: 1200,
-    marginBottom: 50, 
-  },
-  media: {
-    height: 700,
-    //paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    //transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    //transform: 'rotate(180deg)',
-  },
-
-  avatar: {
-    backgroundColor: red[100], 
-  },
-}));
-
-
-export default function PostLayout({profileInitials, timestamp,username, imageURL, caption, comment}) {
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+function PostLayout({username, caption, imageUrl}) {
 
   return (
-    <div className ={classes.cardPadding}>
-<Card className={classes.root}>
-
-<CardHeader
-avatar={ <Avatar aria-label="Avatar" className={classes.avatar}> {profileInitials /* this is where I get the initials from TD*/}</Avatar> }
-action={ <IconButton aria-label=" settings"> <MoreVertIcon /> </IconButton> }
-title= {username}
-subheader= {timestamp /* this is where I get the date from TD*/}
-/>
-
-<CardMedia
-    className={classes.media}
-    image= {imageURL /* no picture in the asset*/}
-    title="Picture media"
-/>
-
-<CardContent className= {classes.caption}>
     
-    <Typography variant="body2" color="textSecondary" component="p">
-    
-    {caption /* this is where I get the caption from TD*/}
-    
-    </Typography>
+    <div className="postLayout">
+      
+      <div className="postLayout_header">
+      <Avatar
+        className="postLayout_avatar"
+        alt= {username}
+        src="/static/images/avatar/1.jpg"  
+      />
+      <h3> {username} </h3>
 
-</CardContent>
-
-<CardActions disableSpacing>
-    
-    <IconButton aria-label="add to favorites">
-        <FavoriteIcon />
-    </IconButton>
-
-    <IconButton aria-label="share">
-        <ShareIcon />
-    </IconButton>
-
-    <IconButton
-        className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-        })}
-        onClick={handleExpandClick}
-        aria-expanded={expanded}
-        aria-label="show more comments" 
-    >
-        <ChatIcon />
-    </IconButton>
-
-</CardActions>
-
-<Collapse in={expanded} timeout="auto" unmountOnExit>
-
-<CardContent>
-    
-  <Typography >
+    </div>
+ 
+    <img className="postlayout_image" src={imageUrl} alt=""></img>
     
 
-    {comment /* this is where I get the comment from TD*/}
-    
-  </Typography>
-
-</CardContent>
-</Collapse>
-</Card>            
-
-</div>
-  );
+    <h4 className="postlayout_text">  <strong> {username} </strong> {caption} </h4>
+  
+    </div>
+  )
 }
+
+export default PostLayout
