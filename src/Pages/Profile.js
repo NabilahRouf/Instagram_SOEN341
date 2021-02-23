@@ -7,14 +7,13 @@ import {AuthenticationContext} from "../Authenticated";
 import {database} from "../firebase"
 import FollowButton from '../Components/FollowButton';
 
-const ProfilePage = (props) => {
+const ProfilePage = () => {
     
     document.title ='Stratus - Profiles';
     const [selectedImg, setSelectedImg] = useState(null);
     const[selectedUser,setSelectedUser] = useState(null);
     const{user} = useContext(AuthenticationContext);
     
-
     //counts of profile that you are currently on 
     const [userFollowersCount,setUserFollowersCount]=useState(0);
     const [userFollowingCount,setUserFollowingCount]=useState(0);
@@ -23,16 +22,9 @@ const ProfilePage = (props) => {
     const [followInvoked,setFollowInvoked] = useState(false);
     const [isFollower,setIsFollower] = useState(false);
 
-    
-    
-
     const follow = async() => {
        
-
-        //TODO change current user to uid
-      var currentUser = await database.collection('users').doc(user.uid).get().then((doc)=>{
-        return doc.data().uid;
-        }).catch((error)=>{alert(error.message);})
+       var currentUser = user.uid;
 
         console.log(currentUser);
         console.log("Selected User: " + selectedUser);
@@ -41,17 +33,18 @@ const ProfilePage = (props) => {
         //get the user to be followed by username
         await database.collection('users').where('username','==',selectedUser).get().then((snapshot) => {
             snapshot.forEach((doc)=>{
-                selectedUserId=doc.data().uid;
+                const document=doc.data();
+                selectedUserId=document.uid;
                 console.log("selected ID"+ selectedUserId);
                 //creating a new document with its resppective id
                 database.collection('users').doc(doc.id).collection('followers').doc(currentUser).set({followerId: currentUser});
                 //increment followers count of the account to be followed
-                var followersCount=doc.data().followersCount;
+                var followersCount=document.followersCount;
                 //get all data (followingCount,id and username) the same way and put it in the set or else theyll disappear (overwritten)
                 followersCount++;
-                var followingCount=doc.data().followingCount;
-                var uid=doc.data().uid;
-                var username=doc.data().username;
+                var followingCount=document.followingCount;
+                var uid=document.uid;
+                var username=document.username;
                 database.collection('users').doc(doc.id).set({
                     followersCount: followersCount,
                     followingCount:followingCount,
@@ -96,41 +89,38 @@ const ProfilePage = (props) => {
     setFollowInvoked(true);
     };
 
-    useEffect(() =>{
      
+        
+    // useEffect(() =>{
+
+        //getting selected user's username from database
         database.collection('selectedUser').doc(user.uid).get().then((doc)=>{
             
             setSelectedUser(doc.data().selectedUser);
         
         }).catch((error) => {console.log("Error getting document:", error);});
 
-
+    useEffect(() =>{
+        
         database.collection('users').where('username','==',selectedUser).get().then((snapshot) => {
             snapshot.forEach((doc)=>{
-                setSelectedUserUid(doc.data().uid);
-            });
-        }).catch((error) => {console.log("Error getting document:", error);});
-
+                const document = doc.data();
+                setSelectedUserUid(document.uid);
+                setUserFollowersCount(document.followersCount);
+                setUserFollowingCount(document.followingCount);
+                setName(document.username);
+                
+            })
+        }).catch((error)=>{alert(error.message);})
 
         database.collection('users').doc(user.uid).collection('following').where('followingId','==',selectedUserUid).get().then((snapshot)=>{
             snapshot.forEach((doc)=>{
-                    console.log(doc.data().followingId);
                     setIsFollower(true);
             })  
         }).catch((error)=>{alert(error.message);})
         
-        database.collection('users').where('username','==',selectedUser).get().then((snapshot) => {
-                snapshot.forEach((doc)=>{
-                    setUserFollowersCount(doc.data().followersCount);
-                    setUserFollowingCount(doc.data().followingCount);
-                    setName(doc.data().username);
-                    
-                })
-            }).catch((error)=>{alert(error.message);})
-
-    },[selectedUser,followInvoked,selectedUserUid,user.uid]);
-
-            
+        console.log("useEffect Profile");
+    },[selectedUser,followInvoked,selectedUserUid,user]);
 
     return(
         <div>
@@ -149,7 +139,7 @@ const ProfilePage = (props) => {
                 <div> Following: {userFollowingCount} </div>
             </div>
             <div>
-                <ImageGrid setSelectedImg={setSelectedImg}/>
+                <ImageGrid setSelectedImg={setSelectedImg} profile = {selectedUserUid}/>
                 {selectedImg && <Modal selectedImg = {selectedImg} setSelectedImg={setSelectedImg}/>}
             </div>
         </div>

@@ -1,21 +1,36 @@
-import React,{useState,useContext,useEffect} from 'react';
+import React,{useState,useEffect} from 'react';
 import {database} from '../firebase';
 import './ImageGrid.css';
-import {AuthenticationContext} from "../Authenticated";
 
-const ImageGrid = ({setSelectedImg}) => {
 
-    const{user} = useContext(AuthenticationContext);
+const ImageGrid = ({setSelectedImg, profile}) => {
+
     const[docs,setDocs]=useState([]);
     
     useEffect(()=>{
-        database.collection('posts')
-        .where('uid','==',user.uid)
+       const unsubscribe = database.collection('posts')
+        .where('uid','==',profile)
+        .orderBy('timestamp','desc')
         .onSnapshot(snapshot => {
-            setDocs(snapshot.docs.map(doc=>doc.data()))
+            let documents = [];
+                snapshot.forEach((doc)=>{
+                    if(doc.data().uid===profile){
+                        const post={
+                            id: doc.id,
+                           ...doc.data(),
+                        }
+                        documents.push(post);
+                    }
+                });
+                 setDocs(documents);   
+        
         
     })
-    })
+    console.log("useEffect ImageGrid"); 
+    return () => {unsubscribe();}
+    },[profile])
+    
+ 
     
 // const [initial,setInitial]=useState("TD");
     return(

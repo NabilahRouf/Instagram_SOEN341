@@ -1,13 +1,14 @@
 .postLayout {
     background-color: white;
-    max-width: 900px;
+    width: 900px;
     
     border: 1px solid lightgray;
     margin-bottom: 45px;
 }
 
 .postlayout_image{
-    width: 100%;
+    width:100%;
+    height:auto;
     object-fit: contain; 
     border-top: 1px solid lightgrey;
     border-bottom: 1px solid lightgrey;
@@ -51,4 +52,12 @@
     background-color: transparent;
     color: #6082a3;
     border-top: 1px solid lightgray;
+}
+
+.timestamp{
+    color:grey;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 150;
+    margin-left: 20px;
 }
