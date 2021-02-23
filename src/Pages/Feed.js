@@ -42,7 +42,7 @@ const MainPage =() =>{
             
                 {
                     posts.map(({id, post}) => (
-                    <PostLayout key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
+                    <PostLayout key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} timestamp={post.timestamp}/>
                     ))
                 } 
             </div>
