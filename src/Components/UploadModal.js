@@ -1,6 +1,5 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import TextField from '@material-ui/core/TextField';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
@@ -15,6 +14,7 @@ import './UploadedForm.css'
 import {useState, useContext} from 'react'
 import {firebaseStorage, database, timestamp} from "../firebase"
 import {AuthenticationContext} from "../Authenticated";
+import UploadButton from '../Components/UploadButton';
 
 const styles = (theme) => ({
   root: {
@@ -72,6 +72,7 @@ export default function CustomizedDialogs() {
   // const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState('');
   const{user} = useContext(AuthenticationContext);
+  const [isSelected,setSelected] = useState(false);
 
 
   const changeHandler = (e) => {
@@ -83,6 +84,8 @@ export default function CustomizedDialogs() {
     if(selected && allowedTypes.includes(selected.type)) {
         setImage(selected);
         setError('');
+        setSelected(true);
+    
     } else {
         setImage(null);
         setError('Please select an image file (jpeg or png)');
@@ -173,9 +176,7 @@ const handleUpload =() => {
           />
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleUpload} color="primary">
-            Upload
-          </Button>
+          <UploadButton isSelected={isSelected} handleUpload = {handleUpload}/>
         </DialogActions>
       </Dialog>
     </div>
