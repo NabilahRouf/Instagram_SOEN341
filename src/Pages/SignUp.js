@@ -31,10 +31,7 @@ const SignUpPage =()=> {
         await auth.createUserWithEmailAndPassword(email.value,password.value).then((authenticatedUser) =>  {
             database.collection('users').doc(authenticatedUser.user.uid).set({
                 followersCount:0,
-                //followers: [],
-                //following:[],
                 followingCount:0,
-                //myPosts:[],
                 uid:authenticatedUser.user.uid,
                 username: username.value,
             

@@ -1,4 +1,4 @@
-import React, {useState,useContext,useEffect} from 'react';
+import React, {useState,useContext} from 'react';
 import ImageGrid from '../Components/ImageGrid'
 import Modal from '../Components/Modal'
 import Header from '../Components/Header'
@@ -17,15 +17,12 @@ const ProfilePage = () => {
     const [userFollowingCount,setUserFollowingCount]=useState(0);
     const [name,setName]=useState('');    
 
-    useEffect(() =>{
-
-            database.collection('users').doc(user.uid).get().then((doc)=>{
-                setUserFollowersCount(doc.data().followersCount);
-                setUserFollowingCount(doc.data().followingCount);
-                setName(doc.data().username);
-            }).catch((error)=>{alert(error.message);})
-        
-    },[user]);
+    database.collection('users').doc(user.uid).get().then((doc)=>{
+        const document= doc.data();
+        setUserFollowersCount(document.followersCount);
+        setUserFollowingCount(document.followingCount);
+        setName(document.username);
+    }).catch((error)=>{alert(error.message);})
         
     return(
         <div>
@@ -43,7 +40,7 @@ const ProfilePage = () => {
                 </div>                       
             </div>
             <div>
-                <ImageGrid setSelectedImg={setSelectedImg}/>
+                <ImageGrid setSelectedImg={setSelectedImg}  profile ={user.uid}/>
                 {selectedImg && <Modal selectedImg = {selectedImg} setSelectedImg={setSelectedImg}/>}
             </div>
         </div>

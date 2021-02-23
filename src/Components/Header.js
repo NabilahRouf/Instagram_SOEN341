@@ -141,19 +141,16 @@ export default function Header(){
     const[username, setUsername]=useState('');
     const{user} = useContext(AuthenticationContext);
     const onSelectChange = (event,value) => {
-    database.collection('selectedUser').doc(user.uid).set({
-      selectedUser: value
- })
-        setUsername(value);  
+      database.collection('selectedUser').doc(user.uid).set({
+        selectedUser: value
+    })
+    setUsername(value); 
+    console.log("chose user");  
       }
-    //   const [checked, setChecked] = useState(false);
-    //   useEffect(()=>{
-    //      setChecked(true);
-    //  },[]);
- 
 
       //load all users
-    useEffect(() => {
+      useEffect(() => {
+        console.log("header useEffect");
          database.collection("users").get().then((snapshot) => {
             const usersSnapshot=[];
             snapshot.forEach((doc) => {
@@ -170,7 +167,7 @@ export default function Header(){
             console.log("Error getting documents: ", error);
         });
 
-         });
+         },[user]);
  
          if(username){
             return (
