@@ -1,28 +1,38 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState , useEffect, useContext } from 'react';
 import {auth, database} from "../firebase"
 import Header from '../Components/Header'
 import './Feed.css';
 import PostLayout from '../Components/PostLayout';
+import  { AuthenticationContext } from '../Authenticated';
 
 const MainPage =() =>{
     const [posts, setPosts] = useState([]);
-
+    
+    const {user} = useContext(AuthenticationContext);
     // useeeffect -> tuns a peice of code based on a specific condition
 
     useEffect(() => {
+        var following = [user.uid];
         console.log("feed useeffect");
-        // this is where the code runs, we are odrering posts by timestamps. 
-        const unsubscribe = database.collection('posts').orderBy('timestamp','desc').onSnapshot(snapshot => {
-            // everytime a change happens like a new post, this code is fired
-            setPosts(snapshot.docs.map(doc => ({
-                id: doc.id,
-                post: doc.data()
-            })));
+        
+        database.collection('users').doc(user.uid).collection('following').get().then(snapshot=>{
+                snapshot.forEach((doc)=>{
+                    following.push(doc.data().followingId);
+                });
+                
+                const unsubscribe = database.collection('posts').where('uid','in',following).orderBy('timestamp','desc').onSnapshot(snapshot => {
+                    // everytime a change happens like a new post, this code is fired
+                    setPosts(snapshot.docs.map(doc => ({
+                        id: doc.id,
+                        post: doc.data()
+                    })));
+                })
+                return () => unsubscribe(); 
         })
-        return () => unsubscribe();
-    }, [
-        // condition, if emtpy then it updates when page refreshes
-    ]);
+    
+    
+    }, [user]);
+    
     
     document.title ='Stratus - Home';  
     return(
