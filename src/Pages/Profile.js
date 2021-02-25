@@ -11,9 +11,8 @@ const ProfilePage = () => {
     
     document.title ='Stratus - Profiles';
     const [selectedImg, setSelectedImg] = useState(null);
-    const[selectedUser,setSelectedUser] = useState(null);
     const{user} = useContext(AuthenticationContext);
-    
+    const [selectedUser,setSelectedUser] = useState(null);
     //counts of profile that you are currently on 
     const [userFollowersCount,setUserFollowersCount]=useState(0);
     const [userFollowingCount,setUserFollowingCount]=useState(0);
@@ -90,17 +89,13 @@ const ProfilePage = () => {
     };
 
      
-        
-    // useEffect(() =>{
 
-        //getting selected user's username from database
+    useEffect(() =>{
+
         database.collection('selectedUser').doc(user.uid).get().then((doc)=>{
             
             setSelectedUser(doc.data().selectedUser);
-        
         }).catch((error) => {console.log("Error getting document:", error);});
-
-    useEffect(() =>{
         
         database.collection('users').where('username','==',selectedUser).get().then((snapshot) => {
             snapshot.forEach((doc)=>{
@@ -114,12 +109,17 @@ const ProfilePage = () => {
         }).catch((error)=>{alert(error.message);})
 
         database.collection('users').doc(user.uid).collection('following').where('followingId','==',selectedUserUid).get().then((snapshot)=>{
-            snapshot.forEach((doc)=>{
-                    setIsFollower(true);
-            })  
+            if(!snapshot.empty){
+                setIsFollower(true);
+            }
+            else{
+                setIsFollower(false);
+            }
+             
         }).catch((error)=>{alert(error.message);})
         
         console.log("useEffect Profile");
+        
     },[selectedUser,followInvoked,selectedUserUid,user]);
 
     return(
