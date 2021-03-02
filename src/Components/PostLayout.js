@@ -6,10 +6,27 @@ import { database } from '../firebase';
 import firebase from 'firebase';
 
 
+
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     display: 'flex',
+//     '& > *': {
+//       margin: theme.spacing(1),
+//     },
+//   },
+//   timestampUI: {
+//     display: 'flex',
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// }));
+
 function PostLayout({ postId , user , username, caption, imageUrl, timestamp }) {
   
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState('');
+
 
   useEffect(() => {
     let unsubscribe
@@ -19,9 +36,12 @@ function PostLayout({ postId , user , username, caption, imageUrl, timestamp }) 
         .collection("posts")
         .doc(postId)
         .collection("comments")
-        .orderBy('timestamp', 'desc')
+        .orderBy('timestamp', 'asc')
         .onSnapshot((snapshot) => {
-          setComments(snapshot.docs.map((doc) => doc.data()));
+          setComments(snapshot.docs.map(doc => ({
+            id: doc.id,
+            comment: doc.data()
+        })));
         });
     }
     return () =>{
@@ -45,6 +65,7 @@ const postComment = (event) => {
     
     <div className="postLayout">
       
+ 
       <div className="postLayout_header">
         <Avatar
           className="postLayout_avatar"
@@ -53,6 +74,7 @@ const postComment = (event) => {
         />
         <h3> {username} </h3>
       </div>
+      
  
       <img className="postlayout_image" src={imageUrl} alt=""></img>
     
@@ -61,12 +83,15 @@ const postComment = (event) => {
       <h4 className="postlayout_timestamp">{moment(timestamp && timestamp.toDate()).format('MMMM Do YYYY, h:mm a')}</h4>
 
       <div className="postlayout_comments">
-        {comments.map((comment) => (
-        <p>
-          <strong> {comment.username} </strong> {comment.text}
-        </p>
+        {comments.map(({id,comment}) => (
+        <div className="postlayout_singlecomment" key={id}>
+          <div><strong> {comment.username} </strong> {comment.text}</div>
+          <div className="postlayout_commenttimestamp">{moment(timestamp && timestamp.toDate()).format('MMMM Do YYYY, h:mm a')}</div>
+        </div>
+        
         ))}
       </div>
+
 
 
 
