@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { createMuiTheme, withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import TextField from '@material-ui/core/TextField';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
@@ -15,6 +15,7 @@ import {useState, useContext} from 'react'
 import {firebaseStorage, database, timestamp} from "../firebase"
 import {AuthenticationContext} from "../Authenticated";
 import UploadButton from '../Components/UploadButton';
+import {ThemeProvider} from '@material-ui/core';
 
 const styles = (theme) => ({
   root: {
@@ -26,6 +27,17 @@ const styles = (theme) => ({
     right: theme.spacing(1),
     top: theme.spacing(1),
     color: theme.palette.grey[500],
+  },
+});
+
+const colorTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#e6b3ae',
+    },
+    secondary: {
+      main: '#858585',
+    },
   },
 });
 
@@ -61,9 +73,11 @@ export default function CustomizedDialogs() {
 
   const handleClickOpen = () => {
     setOpen(true);
+    setError("");
   };
   const handleClose = () => {
     setOpen(false);
+ 
   };
 
   const [image, setImage] = useState(null);
@@ -103,7 +117,7 @@ const handleUpload =() => {
       // progress function
       // const progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes) * 100);
       // setProgress(progress);
-
+    
     },
     (error) => {
       //Error function 
@@ -130,6 +144,7 @@ const handleUpload =() => {
           // setProgress(0);
           setCaption("");
           setImage(null);
+          setError("");
           handleClose();
 
         })
@@ -166,14 +181,17 @@ const handleUpload =() => {
           <Typography gutterBottom>
             Pair your lovely photo with a caption:
           </Typography>
+          <ThemeProvider theme={colorTheme}>
           <TextField onChange={event=>setCaption(event.target.value)} value = {caption}
             autoFocus
             margin="dense"
             id="name"
             label="Caption"
             type="email"
+            color="primary"
             fullWidth
           />
+          </ThemeProvider>
         </DialogContent>
         <DialogActions>
           <UploadButton isSelected={isSelected} handleUpload = {handleUpload}/>

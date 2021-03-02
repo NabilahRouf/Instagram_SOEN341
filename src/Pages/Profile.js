@@ -3,9 +3,39 @@ import ImageGrid from '../Components/ImageGrid'
 import Modal from '../Components/Modal'
 import Header from '../Components/Header'
 import './Profile.css';
+import './PersonalProfile.css';
+
 import {AuthenticationContext} from "../Authenticated";
 import {database} from "../firebase"
 import FollowButton from '../Components/FollowButton';
+import { makeStyles } from '@material-ui/core/styles';
+import Avatar from "@material-ui/core/Avatar";
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+    large: {
+      width: theme.spacing(17),
+      height: theme.spacing(17),
+      backgroundColor: '#BEE6EE',
+      fontSize:'5em',
+      color: '#808080',
+      
+    },
+  }));
+
+  const ColoredLine = () => (
+    <hr
+        style={{
+            color: '#f5f5f5',
+            height: 0.1
+        }}
+    />
+);
 
 const ProfilePage = () => {
     
@@ -20,6 +50,7 @@ const ProfilePage = () => {
     const [selectedUserUid,setSelectedUserUid] = useState('');
     const [followInvoked,setFollowInvoked] = useState(false);
     const [isFollower,setIsFollower] = useState(false);
+    const classes = useStyles();
 
     const follow = async() => {
        
@@ -127,17 +158,23 @@ const ProfilePage = () => {
             <div>
                 <Header/>
             </div>
-            <div className="profileHeader">
-                Profile
+            <div className="profileInfo"> 
+                <div className="userIconAvatar">
+                <Avatar className = {classes.large} alt= {name} src="/static/images/avatar/1.jpg"/>
+                </div>    
+                                                                    
+                <div>
+                    <div className="usernameFollow">
+                        <div className = "username"> {name} </div>
+                        <div className="followButton"><FollowButton selectedUserUid={selectedUserUid} isFollower={isFollower} follow={follow}/> </div>
+                    </div>
+                    <div className ="follow">
+                        <strong>Followers:</strong> {userFollowersCount} &nbsp;
+                        <strong>Following: </strong>{userFollowingCount}
+                    </div>
+                </div>                       
             </div>
-            <div>          
-
-                <FollowButton selectedUserUid={selectedUserUid} isFollower={isFollower} follow={follow}/>
-                
-                <div>User: {name}</div>
-                <div>Followers: {userFollowersCount} </div>
-                <div> Following: {userFollowingCount} </div>
-            </div>
+            <ColoredLine/>
             <div>
                 <ImageGrid setSelectedImg={setSelectedImg} profile = {selectedUserUid}/>
                 {selectedImg && <Modal selectedImg = {selectedImg} setSelectedImg={setSelectedImg}/>}

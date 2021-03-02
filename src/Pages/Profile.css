@@ -6,3 +6,12 @@
     background: rgb(235, 225, 225);
 
 }
+
+.usernameFollow {
+    display:flex;
+}
+
+.followButton {
+    padding-top: 3.4em;
+    color:teal;
+}
