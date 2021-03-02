@@ -1,4 +1,3 @@
-
 .postLayout {
     background-color: white;
     max-width: 900px;
@@ -16,7 +15,8 @@
 
 .postlayout_text{
     font-weight: normal;
-    padding: 20px;
+    padding-left: 20px;
+    padding-bottom: 5px;
 }
 
 .postLayout_header{
@@ -60,5 +60,23 @@
 }
 
 .postlayout_comments{
-    padding: 20px;
+    
+    padding-left: 20px;
+}
+
+.timestampUI {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: 'center';
+}
+
+.postLayout_singlecomment{
+    display: flex;
+    align-items: center;
+}
+.postlayout_commenttimestamp{
+    padding-top: 5px;
+    padding-bottom: 10px;
+    font-size: 10px;
 }
