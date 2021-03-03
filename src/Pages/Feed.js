@@ -1,5 +1,5 @@
 import React, { useState , useEffect, useContext } from 'react';
-import {auth, database} from "../firebase"
+import {database} from "../firebase"
 import Header from '../Components/Header'
 import './Feed.css';
 import PostLayout from '../Components/PostLayout';
