@@ -1,6 +1,7 @@
 .postLayout {
     background-color: white;
     max-width: 900px;
+    min-width: 900px;
     border: 1px solid lightgray;
     margin-bottom: 45px;
 }
@@ -13,8 +14,10 @@
     border-bottom: 1px solid lightgrey;
 }
 
-.postlayout_text{
+.postlayout_caption{
+    font-family: Arial;
     font-weight: normal;
+    padding-top: 10px;
     padding-left: 20px;
     padding-bottom: 5px;
 }
@@ -30,9 +33,8 @@
 }
 
 .postlayout_timestamp{
-    color:grey;
+    font-family: Arial;
     font-size: 15px;
-    font-family: 'Times New Roman', Times, serif;
     font-weight: 150;
     margin-left: 20px;
     padding-bottom: 20px;
@@ -41,7 +43,6 @@
 .postlayout_commentbox{
     display: flex;
     margin-top: 10px;
-    
 }
 
 .postlayout_input{
@@ -60,7 +61,6 @@
 }
 
 .postlayout_comments{
-    
     padding-left: 20px;
 }
 
@@ -72,10 +72,12 @@
 }
 
 .postLayout_singlecomment{
+    font-family: Arial;
     display: flex;
     align-items: center;
 }
 .postlayout_commenttimestamp{
+    font-family: Arial;
     padding-top: 5px;
     padding-bottom: 10px;
     font-size: 10px;

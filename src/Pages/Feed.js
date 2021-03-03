@@ -13,8 +13,7 @@ const MainPage =() =>{
 
     useEffect(() => {
         var following = [user.uid];
-        console.log("feed useeffect");
-        
+
         database.collection('users').doc(user.uid).collection('following').get().then(snapshot=>{
                 snapshot.forEach((doc)=>{
                     following.push(doc.data().followingId);
@@ -33,7 +32,7 @@ const MainPage =() =>{
     
     }, [user]);
     
-    
+
     document.title ='Stratus - Home';  
     return(
         <div className="feed">
@@ -41,23 +40,17 @@ const MainPage =() =>{
             <div>
                 <Header/>
             </div>
-        
-            <div>
-            <button type="button" onClick={() => auth.signOut()}>
-                LogOut
-            </button>
-            </div>
 
             <div className="feed_posts"> 
-            
+
                 {
-                    posts.map(({id, post}) => (
+                    posts.map(({id, post}) => ( 
                     <PostLayout key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} timestamp={post.timestamp}/>
                     ))
                 } 
             </div>
 
-        
+            
         </div>
 );
 

@@ -78,15 +78,15 @@ const postComment = (event) => {
  
       <img className="postlayout_image" src={imageUrl} alt=""></img>
     
-      <h4 className="postlayout_text">  <strong> {username} </strong> {caption} </h4>
+      <h4 className="postlayout_caption">  <strong> {username} </strong> {caption} </h4>
 
       <h4 className="postlayout_timestamp">{moment(timestamp && timestamp.toDate()).format('MMMM Do YYYY, h:mm a')}</h4>
 
       <div className="postlayout_comments">
         {comments.map(({id,comment}) => (
         <div className="postlayout_singlecomment" key={id}>
-          <div><strong> {comment.username} </strong> {comment.text}</div>
-          <div className="postlayout_commenttimestamp">{moment(timestamp && timestamp.toDate()).format('MMMM Do YYYY, h:mm a')}</div>
+          <div> <strong> {comment.username} </strong> {comment.text} </div>
+          <div className="postlayout_commenttimestamp">{moment(comment.timestamp && comment.timestamp.toDate()).format('MMMM Do YYYY, h:mm a')} </div>
         </div>
         
         ))}
