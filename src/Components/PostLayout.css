@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 .postLayout {
     background-color: white;
     max-width: 900px;
@@ -15,29 +17,35 @@
 }
 
 .postlayout_caption{
-    font-family: Arial;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     padding-top: 10px;
     padding-left: 20px;
-    padding-bottom: 5px;
+    padding-bottom: 2em;
+    
 }
 
 .postLayout_header{
     display: flex;
     align-items: center;
     padding: 20px;
+    color:rgb(75, 72, 72);
+    font-family: 'Open Sans', sans-serif;
 }
 
 .postLayout_avatar{
     margin-right: 10px;
+    background-color: rgb(190,230,238);
+    color:gray;
+
 }
 
 .postlayout_timestamp{
-    font-family: Arial;
-    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
     font-weight: 150;
     margin-left: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .postlayout_commentbox{
@@ -48,7 +56,6 @@
 .postlayout_input{
     flex: 1;
     border: none;
-    padding: 10px;
     border-top: 1px solid lightgray;
 }
 
@@ -62,6 +69,8 @@
 
 .postlayout_comments{
     padding-left: 20px;
+    font-family: 'Open Sans', sans-serif;
+    
 }
 
 .timestampUI {
@@ -72,13 +81,34 @@
 }
 
 .postLayout_singlecomment{
-    font-family: Arial;
+    font-family: 'Open Sans', sans-serif;
     display: flex;
     align-items: center;
 }
 .postlayout_commenttimestamp{
-    font-family: Arial;
+    font-family: 'Open Sans', sans-serif;
     padding-top: 5px;
     padding-bottom: 10px;
-    font-size: 10px;
+    font-size: 13px;
+    padding-right: 2em;
+    max-width:100ch;
+    display: inline-block;
+    word-wrap: break-word;
+}
+
+.inLine {
+    display:flex;
+    justify-content: space-between;
+}
+
+.name {
+    font-variant: small-caps;
+    font-size: 20px;
+    padding-right: 0.5em;
+    
+}
+
+.captionAndTime {
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 1em;
 }
