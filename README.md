@@ -28,7 +28,7 @@ Javascript, HTML and CSS
 ## Techniques
 
 - FrontEnd: React and MaterialUI
-- Backend : Express
+- Backend : NodeJS
 - Database : Firebase for authentication, database and storage
 
 ## Contributors
