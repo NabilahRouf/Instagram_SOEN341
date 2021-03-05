@@ -1,13 +1,13 @@
 import React, {useState,useContext} from 'react';
 import ImageGrid from '../Components/ImageGrid'
 import Modal from '../Components/Modal'
-import Header from '../Components/Header'
 import './Profile.css';
 import Avatar from "@material-ui/core/Avatar";
 import {AuthenticationContext} from "../Authenticated";
 import {database} from "../firebase"
 import './PersonalProfile.css';
 import { makeStyles } from '@material-ui/core/styles';
+import HeaderProfile from '../Components/HeaderProfile';
 
 
 
@@ -59,7 +59,7 @@ const ProfilePage = () => {
     return(
         <div>
             <div>
-                <Header/>
+                <HeaderProfile/>
             </div>
             <div className="profileInfo"> 
                 <div className="userIconAvatar">

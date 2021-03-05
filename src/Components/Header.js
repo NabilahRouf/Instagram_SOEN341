@@ -1,6 +1,6 @@
 import React,{useState,useEffect,useContext} from 'react';
 import { Link } from 'react-router-dom';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles,createMuiTheme, withStyles } from '@material-ui/core/styles';
 import { AppBar, IconButton , ThemeProvider, Toolbar} from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import UploadModal from '../Components/UploadModal';
@@ -8,7 +8,6 @@ import {database} from '../firebase'
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import {Redirect} from "react-router-dom";
-import { createMuiTheme, withStyles } from '@material-ui/core/styles';
 import {AuthenticationContext} from "../Authenticated";
 import Menu from '../Components/Menu'
 
@@ -87,7 +86,9 @@ const useStyles = makeStyles((theme)=>({
     textfieldCSS : {
         marginBottom: 15,
     },
-
+    buttons:{
+      marginRight: 'auto',
+   },
       inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
@@ -181,7 +182,7 @@ export default function Header(){
                 <h1>
                 <img alt="stratusLogo" className={classes.logo} src="/images/logo4.png"/>
                 </h1>
-                <div style ={{display: "flex"}}>
+                <div style ={{display: "flex"}} className={classes.buttons}>
                 <Autocomplete
                     classes={{ root: classes.inputRoot, input: classes.inputInput }}
                     id="username Search"
@@ -209,9 +210,10 @@ export default function Header(){
                   <div className={classes.search}> 
                  </div>
                 </div>
-                <div>
+                <div className={classes.buttons}>
+                  </div>
                     <UploadModal/>
-                </div> 
+                
                 <IconButton >
                     <Link to = "/feed">
                         <HomeIcon className= {classes.homeIcon}></HomeIcon>

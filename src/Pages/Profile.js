@@ -1,15 +1,15 @@
 import React, {useState,useContext,useEffect} from 'react';
 import ImageGrid from '../Components/ImageGrid'
 import Modal from '../Components/Modal'
-import Header from '../Components/Header'
+import HeaderProfile from '../Components/HeaderProfile'
 import './Profile.css';
 import './PersonalProfile.css';
-
 import {AuthenticationContext} from "../Authenticated";
 import {database} from "../firebase"
 import FollowButton from '../Components/FollowButton';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from "@material-ui/core/Avatar";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -156,7 +156,7 @@ const ProfilePage = () => {
     return(
         <div>
             <div>
-                <Header/>
+                <HeaderProfile/>
             </div>
             <div className="profileInfo"> 
                 <div className="userIconAvatar">
