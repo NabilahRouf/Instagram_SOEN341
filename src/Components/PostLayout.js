@@ -4,7 +4,34 @@ import Avatar from "@material-ui/core/Avatar";
 import moment from 'moment';
 import { database } from '../firebase';
 import firebase from 'firebase';
+import TextField from '@material-ui/core/TextField';
+import { ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, withStyles} from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#e6b3ae',
+    },
+    secondary: {
+      main: '#8dafb5',
+    },
+  },
+});
+
+const CssTextField = withStyles({
+  root: {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: '#ffffff',
+      },
+      '&:hover fieldset': {
+          borderColor: '#e6b3ae',
+        },
+    }
+  }
+})(TextField);
 
 
 // const useStyles = makeStyles((theme) => ({
@@ -77,15 +104,16 @@ const postComment = (event) => {
       
  
       <img className="postlayout_image" src={imageUrl} alt=""></img>
-    
-      <h4 className="postlayout_caption">  <strong> {username} </strong> {caption} </h4>
+
+      <div className = "captionAndTime">
+      <h4 className="postlayout_caption">  <b className="user"> {username} </b> {caption} </h4>
 
       <h4 className="postlayout_timestamp">{moment(timestamp && timestamp.toDate()).format('MMMM Do YYYY, h:mm a')}</h4>
-
+      </div>
       <div className="postlayout_comments">
         {comments.map(({id,comment}) => (
-        <div className="postlayout_singlecomment" key={id}>
-          <div> <strong> {comment.username} </strong> {comment.text} </div>
+        <div className="inLine" key={id}>
+          <div> <b> {comment.username} </b> {comment.text} </div>
           <div className="postlayout_commenttimestamp">{moment(comment.timestamp && comment.timestamp.toDate()).format('MMMM Do YYYY, h:mm a')} </div>
         </div>
         
@@ -97,22 +125,32 @@ const postComment = (event) => {
 
       <form className="postlayout_commentbox">
 
-        <input
+        <ThemeProvider theme={theme}>
+          <CssTextField
           className="postlayout_input"
+          id="outlined-basic"
+          label="Comment"
+          variant="outlined"
+          color="primary"
           type="text"
           placeholder="Add a comment..."
+          inputProps={{ maxLength: 70 }}
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
 
-        <button
-          className="postLayout_button"
+          <Button
+          // className="postLayout_button"
+          variant = "outlined"
+          color="secondary"
           disabled={!comment}
           type="submit"
           onClick={postComment}
         >
           Post
-        </button>
+        </Button>
+        </ThemeProvider>
+        
 
       </form>
 
