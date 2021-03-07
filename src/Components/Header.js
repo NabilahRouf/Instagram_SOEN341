@@ -180,7 +180,7 @@ export default function Header(){
                 
                 {/* <h1 className = {classes.appbarTitle}>Fake<span className = {classes.colorTitle}> Instagram</span> </h1> */}
                 <h1>
-                <img alt="stratusLogo" className={classes.logo} src="/images/logo4.png"/>
+                <img alt="stratusLogoHeader" className={classes.logo} src="/images/logo4.png"/>
                 </h1>
                 <div style ={{display: "flex"}} className={classes.buttons}>
                 <Autocomplete

@@ -57,19 +57,19 @@ export default function HeaderProfile(){
             <Toolbar  className = {classes.Toolbar}>
                 
                 <h1>
-                    <img alt="stratusLogo" className={classes.logo} src="/images/logo4.png"/>
+                    <img alt="stratusLogoHeaderProfile" className={classes.logo} src="/images/logo4.png"/>
                 </h1>
                 
                 <div className={classes.buttons}>
                 </div> 
                     <UploadModal/>
                 
-                    <IconButton >
+                    <IconButton aria-label = "homeButtonHeaderProfile">
                         <Link to = "/feed">
                             <HomeIcon className= {classes.homeIcon}></HomeIcon>
                         </Link>
                     </IconButton>
-                    <Menu/>
+                    <Menu aria-label = "menuHeaderProfile"/>
             </Toolbar>
         </AppBar>
     </div>
