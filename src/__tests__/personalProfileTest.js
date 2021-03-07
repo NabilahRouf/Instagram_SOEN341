@@ -1,12 +1,15 @@
-import React from 'react'
-import '@testing-library/jest-dom/extend-expect'
+import React from 'react';
+import '@testing-library/jest-dom/extend-expect';
 import PersonalProfilePage from '../Pages/PersonalProfile';
 import ImageGrid from '../Components/ImageGrid';
-import { act, render, screen,fireEvent,cleanup} from "../test-utils";
+import { act, render, screen,fireEvent} from "../test-utils";
 import { getByText } from '@testing-library/react';
+import {database} from '../firebase';
+
 
 beforeEach(async () => {
   const setSelectedImg = jest.fn();
+  await database.enableNetwork();
   await act(async () => {
     render(<ImageGrid setSelectedImg ={setSelectedImg} profile ={"12345"}/>);
     render(<PersonalProfilePage/>);
@@ -14,7 +17,7 @@ beforeEach(async () => {
 });
 
 describe('Stratus Logo', () => {
-  test('Logo must have src = "/images/logo4.png" and alt = "stratusLogo"',async () => {
+  test('Logo must have src = "/images/logo4.png" and alt = "stratusLogo"', () => {
     const stratusLogo = screen.getByAltText('stratusLogoHeaderProfile');
     expect(stratusLogo).toHaveAttribute('src', '/images/logo4.png');
     expect(stratusLogo).toHaveAttribute('alt', 'stratusLogoHeaderProfile');
@@ -23,14 +26,14 @@ describe('Stratus Logo', () => {
 
 describe("Header Home Icon Clicked",() =>{
 
-  test('Home Button Works',async() =>{
+  test('Home Button Works',() =>{
     const homeIcon = screen.getByRole('button',{name: /homeButtonHeaderProfile/i});
     expect(homeIcon).toBeInTheDocument();
     fireEvent.click(homeIcon);
   });
 });
 
-test("displays user", async() => {
+test("displays user", () => {
   expect(screen.getByText(/Followers:/i)).toBeInTheDocument();
   expect(screen.getByText(/Following:/i)).toBeInTheDocument();
   expect(screen.getByText(/0/i)).toBeInTheDocument();
@@ -40,8 +43,8 @@ test("displays user", async() => {
 
 describe("Menu Click", () => {
 
-  afterEach(cleanup);
-  test("renders menu button(Account Circle), then we try to click it", async () => {
+  //afterEach(cleanup);
+  test("renders menu button(Account Circle), then we try to click it",  () => {
     const button = screen.getByRole('button',{name: "accountCircle"});
     fireEvent.click(button);
     const menuItem = screen.getByRole("menu");
@@ -50,6 +53,7 @@ describe("Menu Click", () => {
   });
 });
 
-afterAll(async done => {
-  done();
-});
+afterAll(async () =>{
+  await database.disableNetwork();
+})
+
