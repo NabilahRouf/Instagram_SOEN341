@@ -49,3 +49,7 @@ describe("Menu Click", () => {
     expect(getByText(menuItem, "Logout")).toBeTruthy();
   });
 });
+
+afterAll(async done => {
+  done();
+});
