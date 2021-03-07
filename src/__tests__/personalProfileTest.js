@@ -1,5 +1,4 @@
 import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
 import PersonalProfilePage from '../Pages/PersonalProfile';
 import ImageGrid from '../Components/ImageGrid';
 import { act, render, screen,fireEvent} from "../test-utils";
@@ -40,7 +39,6 @@ test("displays user", () => {
 
 });
 
-
 describe("Menu Click", () => {
 
   //afterEach(cleanup);
@@ -53,7 +51,8 @@ describe("Menu Click", () => {
   });
 });
 
-afterAll(async () =>{
+afterEach(async () =>{
   await database.disableNetwork();
+  jest.clearAllMocks();
 })
 
