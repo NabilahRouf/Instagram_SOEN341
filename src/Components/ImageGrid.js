@@ -26,7 +26,7 @@ const ImageGrid = ({setSelectedImg, profile}) => {
         
         
     })
-    console.log("useEffect ImageGrid"); 
+    //console.log("useEffect ImageGrid"); 
     return () => {unsubscribe();}
     },[profile])
     

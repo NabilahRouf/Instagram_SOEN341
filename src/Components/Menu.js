@@ -68,12 +68,13 @@ export default function MenuListComposition() {
     <div className={classes.root}>
       <div>
         <IconButton
+          aria-label = "accountCircle"
           ref={anchorRef}
           aria-controls={open ? 'menu-list-grow' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
         >
-        <AccountCircleIcon className= {classes.accountIcon} ></AccountCircleIcon>
+        <AccountCircleIcon className= {classes.accountIcon}></AccountCircleIcon>
         </IconButton>
         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
           {({ TransitionProps, placement }) => (
