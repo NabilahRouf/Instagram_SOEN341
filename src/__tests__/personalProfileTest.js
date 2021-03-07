@@ -3,7 +3,6 @@ import '@testing-library/jest-dom/extend-expect'
 import PersonalProfilePage from '../Pages/PersonalProfile';
 import ImageGrid from '../Components/ImageGrid';
 import { act, render, screen,fireEvent,cleanup} from "../test-utils";
-import Menu from '../Components/Menu';
 import { getByText } from '@testing-library/react';
 
 beforeEach(async () => {
@@ -15,7 +14,7 @@ beforeEach(async () => {
 });
 
 describe('Stratus Logo', () => {
-  test('Logo must have src = "/images/logo4.png" and alt = "stratusLogo"', () => {
+  test('Logo must have src = "/images/logo4.png" and alt = "stratusLogo"',async () => {
     const stratusLogo = screen.getByAltText('stratusLogoHeaderProfile');
     expect(stratusLogo).toHaveAttribute('src', '/images/logo4.png');
     expect(stratusLogo).toHaveAttribute('alt', 'stratusLogoHeaderProfile');
@@ -31,7 +30,7 @@ describe("Header Home Icon Clicked",() =>{
   });
 });
 
-test("displays user", () => {
+test("displays user", async() => {
   expect(screen.getByText(/Followers:/i)).toBeInTheDocument();
   expect(screen.getByText(/Following:/i)).toBeInTheDocument();
   expect(screen.getByText(/0/i)).toBeInTheDocument();
