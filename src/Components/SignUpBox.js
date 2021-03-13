@@ -74,6 +74,9 @@ export default function SignUp(props) {
                 fullWidth
                 id="username"
                 label="Username"
+                inputProps={{
+                  'data-testid': 'username'
+                }}
                 name="username"
               />
             </Grid>
@@ -84,6 +87,9 @@ export default function SignUp(props) {
                 fullWidth
                 id="email"
                 label="Email Address"
+                inputProps={{
+                  'data-testid': 'email'
+                }}
                 name="email"
               />
             </Grid>
@@ -94,6 +100,9 @@ export default function SignUp(props) {
                 fullWidth
                 id="password"
                 name="password"
+                inputProps={{
+                  'data-testid': 'password'
+                }}
                 label="Password"
                 type="password"
               />
@@ -108,7 +117,7 @@ export default function SignUp(props) {
             color="primary"
             className={classes.submit}
             style={style}
-          
+            aria-label="signUp"
           >
             Sign Up
           </Button>
