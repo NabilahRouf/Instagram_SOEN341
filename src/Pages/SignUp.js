@@ -34,13 +34,16 @@ const SignUpPage =()=> {
                 followingCount:0,
                 uid:authenticatedUser.user.uid,
                 username: username.value,
-            
              });
+             console.log("Entered create");
 
             return authenticatedUser.user.updateProfile({
             displayName: username.value
+            
             })
         }).catch((error)=>alert(error.message));
+        console.log("after create");
+
     }
 
 
@@ -53,7 +56,7 @@ const SignUpPage =()=> {
 
     return(     
         <div className='hero-container'>
-        <video src="/videos/Clouds.mp4" autoPlay loop muted />
+        <video data-testid="CloudsVideo" alt="CloudsVideo" src="/videos/Clouds.mp4" autoPlay loop muted />
         <div className= "hero-content">
         <SignUpBox  
         handleSignUp={handleSignUp}

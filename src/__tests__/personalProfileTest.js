@@ -7,6 +7,7 @@ import {database} from '../firebase';
 
 
 beforeEach(async () => {
+  window.alert = jest.fn();
   const setSelectedImg = jest.fn();
   await database.enableNetwork();
   await act(async () => {

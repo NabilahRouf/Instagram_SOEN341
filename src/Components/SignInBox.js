@@ -80,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
               fullWidth
               id="email"
               label="Email Address"
+              aria-label="Email Address"
               name="email"
               type= "text"
               autoFocus
@@ -93,6 +94,7 @@ const useStyles = makeStyles((theme) => ({
               id="password"
               name="password"
               label="Password"
+              aria-label="Password"
               type="password"
             />
             <Button
@@ -100,6 +102,7 @@ const useStyles = makeStyles((theme) => ({
               fullWidth
               variant="contained"
               color= "primary"
+              aria-label="submit"
               className={classes.submit}
               style={style}
             >

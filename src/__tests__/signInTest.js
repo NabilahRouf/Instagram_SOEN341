@@ -17,22 +17,3 @@ describe('Testing SignIn Page to Read App Name', () => {
          expect(sum(2,2)).toBe(4);
        }) 
 });
-/*
-describe("<SignInPage />", () => {
-    beforeEach(() => {
-      render(
-        <AuthenticationContext.Provider>
-        <SignInPage/>
-        </AuthenticationContext.Provider>
-        
-      );
-     
-    });
-
-
-it('Sign In Page Title', () => {
-    
-  expect(screen.getByText('Picture Perfect')).toBeInTheDocument();
-});
-});
-*/
