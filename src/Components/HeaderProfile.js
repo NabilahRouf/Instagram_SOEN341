@@ -17,14 +17,14 @@ const useStyles = makeStyles(()=>({
         
     },
     // the appbar itself, without the components. 
-    appbar:{
+    appBar:{
         background: '#ffffff',     // 'none' to remove the background color, so the website background shows.
         borderBottom: '1px solid lightgray',
         
     },
 
     // the appbar wrapper that can be used to align and fix wdith of toolbar. 
-    Toolbar: {
+    toolBar: {
         width: '80%',           // width while centered
         margin: '0 auto',       // to make the toolbar centered.
 
@@ -35,13 +35,14 @@ const useStyles = makeStyles(()=>({
         fontSize: '1.5rem', 
     },
 
-      logo: {
+    logo: {
         width: 110,
         height:50,
-      },
-     buttons:{
+    },
+
+    buttons:{
         marginRight: 'auto',
-     },
+    },
 
 
 }));
@@ -52,9 +53,9 @@ export default function HeaderProfile(){
 
     return (
     <div className = {classes.root}> 
-        <AppBar className = {classes.appbar} elevation={0}>
+        <AppBar className = {classes.appBar} elevation={0}>
 
-            <Toolbar  className = {classes.Toolbar}>
+            <Toolbar  className = {classes.toolBar}>
                 
                 <h1>
                     <img alt="stratusLogoHeaderProfile" className={classes.logo} src="/images/logo4.png"/>

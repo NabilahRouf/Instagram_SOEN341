@@ -24,7 +24,7 @@ video {
     z-index: -1;
 }
 
-.hero-container {
+.heroContainer {
     /*background: url('images/img-home.jpg') center center/cover
     no-repeat;*/
     height: 100vh;
@@ -36,7 +36,7 @@ video {
     object-fit: contain;
 }
 
-.hero-container > h1 {
+.heroContainer > h1 {
     color: #fff;
     margin-left: -700px;
     padding-top: 250px;
@@ -47,7 +47,7 @@ video {
 
 }
 
-.hero-container > p {
+.heroContainer > p {
     color: #fff;
     margin-left: -300px;
     padding-top: 0px;
@@ -56,13 +56,13 @@ video {
 
 }
 
-.hero-content {
+.heroContent {
     display: flex;
     padding-top: 100px;
     align-items: center; 
 }
 
-.hero-header {
+.heroHeader {
     margin-right: 30px;
     color: #fff;
     margin-left: -200px;
@@ -72,7 +72,7 @@ video {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.signIn-form {
+.signInForm {
     margin-top: 100px;
 
 }

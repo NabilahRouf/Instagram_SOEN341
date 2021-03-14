@@ -22,21 +22,21 @@ const useStyles = makeStyles((theme)=>({
         
     },
     // the appbar itself, without the components. 
-    appbar:{
+    appBar:{
         background: '#ffffff',     // 'none' to remove the background color, so the website background shows.
         borderBottom: '1px solid lightgray',
         
     },
 
     // the appbar wrapper that can be used to align and fix wdith of toolbar. 
-    Toolbar: {
+    toolBar: {
         width: '80%',           // width while centered
         margin: '0 auto',       // to make the toolbar centered.
 
     },
 
     // The title on the appbar top of screen.
-    appbarTitle:{
+    appBarTitle:{
         flexGrow: '1',
         fontSize: '1rem',
         color: '#d6a09b',
@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme)=>({
     buttons:{
       marginRight: 'auto',
    },
-      inputInput: {
+      input: {
         padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
@@ -172,19 +172,15 @@ export default function Header(){
           }
     return (
     <div className = {classes.root}> 
-        <AppBar className = {classes.appbar} elevation={0}>
-        {/* <Collapse in = {checked} {...(checked ? { timeout: 2000 } : {})} 
-        collapseHeight={50}> */}
+        <AppBar className = {classes.appBar} elevation={0}>
 
-            <Toolbar  className = {classes.Toolbar}>
-                
-                {/* <h1 className = {classes.appbarTitle}>Fake<span className = {classes.colorTitle}> Instagram</span> </h1> */}
+            <Toolbar  className = {classes.toolBar}>
                 <h1>
                 <img alt="stratusLogoHeader" className={classes.logo} src="/images/logo4.png"/>
                 </h1>
                 <div style ={{display: "flex"}} className={classes.buttons}>
                 <Autocomplete
-                    classes={{ root: classes.inputRoot, input: classes.inputInput }}
+                    classes={{ root: classes.inputRoot, input: classes.input }}
                     id="username Search"
                     style={{width: "450px", marginLeft: "300px"}}
                     disableClearable
@@ -221,7 +217,6 @@ export default function Header(){
                 </IconButton>
                 <Menu/>
             </Toolbar>
-        {/* </Collapse>  */}
         </AppBar>
     </div>
     );

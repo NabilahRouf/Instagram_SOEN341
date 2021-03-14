@@ -83,7 +83,6 @@ export default function CustomizedDialogs() {
   const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
   const allowedTypes = ['image/png', 'image/jpeg'];
-  // const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState('');
   const{user} = useContext(AuthenticationContext);
   const [isSelected,setSelected] = useState(false);
@@ -114,9 +113,6 @@ const handleUpload =() => {
   uploadTask.on(
     "state_changed",
     (snapshot) => {
-      // progress function
-      // const progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes) * 100);
-      // setProgress(progress);
     
     },
     (error) => {
@@ -141,7 +137,6 @@ const handleUpload =() => {
             username: user.displayName,
             uid:user.uid,
           });
-          // setProgress(0);
           setCaption("");
           setImage(null);
           setError("");
