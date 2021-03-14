@@ -9,7 +9,6 @@ const MainPage =() =>{
     const [posts, setPosts] = useState([]);
     
     const {user} = useContext(AuthenticationContext);
-    // useeeffect -> tuns a peice of code based on a specific condition
 
     useEffect(() => {
         var following = [user.uid];
@@ -41,7 +40,7 @@ const MainPage =() =>{
                 <Header/>
             </div>
 
-            <div className="feed_posts"> 
+            <div className="feedPosts"> 
 
                 {
                     posts.map(({id, post}) => ( 

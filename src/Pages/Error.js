@@ -6,7 +6,7 @@ const ErrorPage = () => {
     return(
         
         <div >
-            <img alt="404Logo" className = "dino_Layout" src="/images/dino.png"/>        
+            <img alt="404Logo" className = "errorLayout" src="/images/dino.png"/>        
         </div>
     );
 

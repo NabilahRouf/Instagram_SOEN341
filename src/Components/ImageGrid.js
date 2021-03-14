@@ -26,13 +26,12 @@ const ImageGrid = ({setSelectedImg, profile}) => {
         
         
     })
-    //console.log("useEffect ImageGrid"); 
+
     return () => {unsubscribe();}
     },[profile])
     
  
-    
-// const [initial,setInitial]=useState("TD");
+
     return(
         
          <div className = "imgGrid">
@@ -40,8 +39,7 @@ const ImageGrid = ({setSelectedImg, profile}) => {
                  <div className = "imgWrap" key = {doc.id}
                   onClick= {() => setSelectedImg(doc.imageUrl)}
                   >
-                
-                      {/* {<PostLayout profileInitials={initial} date={doc.timestamp} username={doc.username} imageURL={doc.imageUrl} caption={doc.caption} comment={initial}/>} */}
+        
                     
                      <img src={doc.imageUrl} alt = "uploaded"/>
             </div>

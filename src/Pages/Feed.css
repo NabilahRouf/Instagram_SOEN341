@@ -3,7 +3,7 @@
     min-height: 1000px;
 }
 
-.feed_posts {
+.feedPosts {
     padding: 20px;
     display: flex;
     flex-direction: column;

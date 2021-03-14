@@ -34,21 +34,6 @@ const CssTextField = withStyles({
 })(TextField);
 
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     display: 'flex',
-//     '& > *': {
-//       margin: theme.spacing(1),
-//     },
-//   },
-//   timestampUI: {
-//     display: 'flex',
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// }));
-
 function PostLayout({ postId , user , username, caption, imageUrl, timestamp }) {
   
   const [comments, setComments] = useState([]);
@@ -93,9 +78,9 @@ const postComment = (event) => {
     <div className="postLayout">
       
  
-      <div className="postLayout_header">
+      <div className="postLayoutHeader">
         <Avatar
-          className="postLayout_avatar"
+          className="postLayoutAvatar"
           alt= {username}
           src="/static/images/avatar/1.jpg"  
         />
@@ -103,18 +88,18 @@ const postComment = (event) => {
       </div>
       
  
-      <img className="postlayout_image" src={imageUrl} alt=""></img>
+      <img className="postlayoutImage" src={imageUrl} alt=""></img>
 
       <div className = "captionAndTime">
-      <h4 className="postlayout_caption">  <b className="user"> {username} </b> {caption} </h4>
+      <h4 className="postlayoutCaption">  <b className="user"> {username} </b> {caption} </h4>
 
-      <h4 className="postlayout_timestamp">{moment(timestamp && timestamp.toDate()).format('MMMM Do YYYY, h:mm a')}</h4>
+      <h4 className="postlayoutTimestamp">{moment(timestamp && timestamp.toDate()).format('MMMM Do YYYY, h:mm a')}</h4>
       </div>
-      <div className="postlayout_comments">
+      <div className="postlayoutComments">
         {comments.map(({id,comment}) => (
         <div className="inLine" key={id}>
           <div> <b> {comment.username} </b> {comment.text} </div>
-          <div className="postlayout_commenttimestamp">{moment(comment.timestamp && comment.timestamp.toDate()).format('MMMM Do YYYY, h:mm a')} </div>
+          <div className="postlayoutCommentTimestamp">{moment(comment.timestamp && comment.timestamp.toDate()).format('MMMM Do YYYY, h:mm a')} </div>
         </div>
         
         ))}
@@ -123,11 +108,11 @@ const postComment = (event) => {
 
 
 
-      <form className="postlayout_commentbox">
+      <form className="postlayoutCommentBox">
 
         <ThemeProvider theme={theme}>
           <CssTextField
-          className="postlayout_input"
+          className="postlayoutInput"
           id="outlined-basic"
           label="Comment"
           variant="outlined"

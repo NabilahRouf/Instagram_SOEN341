@@ -4,6 +4,7 @@ import {auth} from "../firebase"
 import SignInBox from '../Components/SignInBox';
 import {AuthenticationContext} from "../Authenticated";
 
+
 const SignInPage =()=> {
     document.title ='Stratus - Sign In';
 
@@ -26,9 +27,9 @@ const SignInPage =()=> {
 
     return(
         
-        <div className='hero-container'>
+        <div className="heroContainer">
         <video src="/videos/Clouds.mp4" autoPlay loop muted />
-        <div className= "hero-content">
+        <div className= "heroContent">
             <div className="logo">
                 <img alt="stratusLogo" src="/images/logo4.png"/>
             </div>
