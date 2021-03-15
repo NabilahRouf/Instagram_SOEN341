@@ -166,7 +166,7 @@ const ProfilePage = () => {
                 <div>
                     <div className="usernameFollow">
                         <div className = "username"> {name} </div>
-                        <div className="followButton"><FollowButton selectedUserUid={selectedUserUid} isFollower={isFollower} follow={follow}/> </div>
+                        <div className="followButton" ><FollowButton selectedUserUid={selectedUserUid} isFollower={isFollower} follow={follow}/> </div>
                     </div>
                     <div className ="follow">
                         <strong>Followers:</strong> {userFollowersCount} &nbsp;

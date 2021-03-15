@@ -38,7 +38,7 @@ describe("SignUp Button Clicked",() =>{
 });
 
 
-describe("TextFields exist and initially enpty",() =>{
+describe("TextFields exist and initially empty",() =>{
 
   test('TextFields Exist and Empty',() =>{
     const password = screen.getByTestId('password');

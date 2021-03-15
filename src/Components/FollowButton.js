@@ -18,7 +18,7 @@ export default function FollowButton(props){
   
 
   if (props.selectedUserUid && !props.isFollower) {
-    return <ThemeProvider theme={theme}><Button type="button" variant = "outlined" color="secondary" onClick={props.follow}>Follow</Button></ThemeProvider>;
+    return <ThemeProvider theme={theme}><Button  variant = "outlined" color="secondary" onClick={props.follow}  aria-label="followButton">Follow</Button></ThemeProvider>;
   } else {
     return null;
   }
