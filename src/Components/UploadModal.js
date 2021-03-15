@@ -150,7 +150,7 @@ const handleUpload =() => {
 
   return (
     <div>
-      <IconButton onClick={handleClickOpen}>
+      <IconButton aria-label="uploadButtonHeader" onClick={handleClickOpen}>
         <PublishIcon className="uploadPicIcon"></PublishIcon>
     </IconButton>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
@@ -180,11 +180,13 @@ const handleUpload =() => {
           <TextField onChange={event=>setCaption(event.target.value)} value = {caption}
             autoFocus
             margin="dense"
-            id="name"
+            id="caption"
             label="Caption"
-            type="email"
             color="primary"
             fullWidth
+            inputProps={{
+              'data-testid': 'caption'
+            }}
           />
           </ThemeProvider>
         </DialogContent>
