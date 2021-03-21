@@ -8,6 +8,7 @@ import {database} from "../firebase"
 import './PersonalProfile.css';
 import { makeStyles } from '@material-ui/core/styles';
 import HeaderProfile from '../Components/HeaderProfile';
+import ListModal from '../Components/ListModal';
 
 
 
@@ -68,8 +69,8 @@ const ProfilePage = () => {
                 <div>
                 <div className = "username"> {name} </div>
                     <div className ="follow">
-                        <strong>Followers:</strong> {userFollowersCount} &nbsp;
-                        <strong>Following: </strong>{userFollowingCount}
+                        <ListModal followType = {"followers"} uid = {user.uid} count={userFollowersCount}/>&nbsp;
+                        <ListModal followType= {"following"} uid = {user.uid} count ={userFollowingCount}/>
                     </div>
                 </div>                       
             </div>
