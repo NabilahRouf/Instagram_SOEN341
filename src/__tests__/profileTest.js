@@ -15,13 +15,6 @@ beforeEach(async () => {
 });
 
 
-test("displays user", () => {
-  expect(screen.getByText(/Followers:/i)).toBeInTheDocument();
-  expect(screen.getByText(/Following:/i)).toBeInTheDocument();
-  expect(screen.getByText(/0/i)).toBeInTheDocument();
-
-});
-
 describe("Upload Button Clicked", () => {
 
   test("renders upload button(Upwards Arrow), then we try to click it",  () => {

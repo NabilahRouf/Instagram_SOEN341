@@ -9,6 +9,7 @@ import {database} from "../firebase"
 import FollowButton from '../Components/FollowButton';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from "@material-ui/core/Avatar";
+import ListModalProfile from '../Components/ListModalProfile';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -169,8 +170,8 @@ const ProfilePage = () => {
                         <div className="followButton" ><FollowButton selectedUserUid={selectedUserUid} isFollower={isFollower} follow={follow}/> </div>
                     </div>
                     <div className ="follow">
-                        <strong>Followers:</strong> {userFollowersCount} &nbsp;
-                        <strong>Following: </strong>{userFollowingCount}
+                        <ListModalProfile followType = {"followers"} uid ={user.uid}  count={userFollowersCount}/>&nbsp;
+                        <ListModalProfile followType= {"following"} uid ={user.uid}  count ={userFollowingCount}/>
                     </div>
                 </div>                       
             </div>

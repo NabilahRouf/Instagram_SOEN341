@@ -33,12 +33,6 @@ describe("Header Home Icon Clicked",() =>{
   });
 });
 
-test("displays user", () => {
-  expect(screen.getByText(/Followers:/i)).toBeInTheDocument();
-  expect(screen.getByText(/Following:/i)).toBeInTheDocument();
-  expect(screen.getByText(/0/i)).toBeInTheDocument();
-
-});
 
 describe("Menu Click", () => {
 

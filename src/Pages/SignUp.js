@@ -55,9 +55,9 @@ const SignUpPage =()=> {
     }
 
     return(     
-        <div className='hero-container'>
+        <div className='heroContainer'>
         <video data-testid="CloudsVideo" alt="CloudsVideo" src="/videos/Clouds.mp4" autoPlay loop muted />
-        <div className= "hero-content">
+        <div className= "heroContent">
         <SignUpBox  
         handleSignUp={handleSignUp}
         ></SignUpBox>

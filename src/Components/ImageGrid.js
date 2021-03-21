@@ -22,11 +22,8 @@ const ImageGrid = ({setSelectedImg, profile}) => {
                         documents.push(post);
                     }
                 });
-                 setDocs(documents);   
-        
-        
-    })
-
+                setDocs(documents);    
+        })
     return () => {unsubscribe();}
     },[profile])
     
