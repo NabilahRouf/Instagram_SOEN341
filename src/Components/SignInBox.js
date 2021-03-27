@@ -82,6 +82,9 @@ const useStyles = makeStyles((theme) => ({
               label="Email Address"
               aria-label="Email Address"
               name="email"
+              inputProps={{
+                'data-testid': 'email'
+              }}
               type= "text"
               autoFocus
 
@@ -95,6 +98,9 @@ const useStyles = makeStyles((theme) => ({
               name="password"
               label="Password"
               aria-label="Password"
+              inputProps={{
+                'data-testid': 'password'
+              }}
               type="password"
             />
             <Button

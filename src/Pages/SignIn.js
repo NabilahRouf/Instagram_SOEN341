@@ -27,8 +27,8 @@ const SignInPage =()=> {
 
     return(
         
-        <div className="heroContainer">
-        <video src="/videos/Clouds.mp4" autoPlay loop muted />
+        <div className='heroContainer'>
+        <video data-testid="CloudsVideo" alt="CloudsVideo" src="/videos/Clouds.mp4" autoPlay loop muted />
         <div className= "heroContent">
             <div className="logo">
                 <img alt="stratusLogo" src="/images/logo4.png"/>

@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import SignUpBox from '../Components/SignUpBox';
 import { act, render, screen,fireEvent} from "../SignUpTest-utils";
@@ -7,6 +5,7 @@ import { getByText } from '@testing-library/react';
 import {auth,database} from '../firebase';
 import SignUpPage from '../Pages/SignUp';
 import handleSignUp from '../Pages/SignUp'
+
 beforeEach(async () => {
   //const handleSignUp = jest.fn(e => e.preventDefault);
   await database.enableNetwork();
@@ -75,9 +74,59 @@ describe("TextFields Change",() =>{
   });
 });
 
+describe("email format",() =>{ 
+  
+  test('email format is correct',() =>{
+   
+    //const validateInput = (str = "") => str.includes("@");
+  
+    const email=screen.getByTestId('email');
+    fireEvent.change(email, { target: { value: 'abc@gmail.com' } });
+    var tempBool =  email.value.includes("@");
+    expect(tempBool).toBe(true);
+    
+  });
+});
+
+describe("Password too short",() =>{
+  test('password is 6 characters or longer',() =>{
+   
+    //const validateInput = (str = "") => str.length>=6;
+    
+    const password = screen.getByTestId('password');
+    fireEvent.change(password, { target: { value: '12345' } });
+    var tempBool = password.value.length>=6;
+    expect(tempBool).toBe(false); //call signUp.js functions
+    
+  });
+});
+
+describe("password just right",() =>{
+  test('password is between 6 and 20 chars long',() =>{
+    
+    const password = screen.getByTestId('password');
+    fireEvent.change(password, { target: { value: '123456' } });
+    var tempBool = password.value.length>=6;
+    expect(tempBool).toBe(true); 
+    
+  });
+});
+
+describe("password too long",() =>{
+  test('password 20 characters or shorter',() =>{
+   
+    //const validateInput = (str = "") => str.length<=20;
+    const password = screen.getByTestId('password');
+    fireEvent.change(password, { target: { value: '012345678901234567890' } });
+    var tempBool = password.value.length<=20;
+    expect(tempBool).toBe(false); 
+    
+  });
+});
 
 afterEach(async () =>{
   await database.disableNetwork();
   jest.clearAllMocks();
 })
+
 
