@@ -3,6 +3,7 @@ import ProfilePage from '../Pages/Profile';
 import ImageGrid from '../Components/ImageGrid';
 import { act, render, screen,fireEvent} from "../test-utils";
 import {database} from '../firebase';
+import { TramOutlined } from '@material-ui/icons';
 
 
 beforeEach(async () => {
@@ -28,7 +29,6 @@ describe("Upload Button Clicked", () => {
 
 
 });
-
 
 afterEach(async () =>{
   await database.disableNetwork();
