@@ -74,9 +74,11 @@ export default function CustomizedDialogs() {
   const handleClickOpen = () => {
     setOpen(true);
     setError("");
+    setImage(null);
   };
   const handleClose = () => {
     setOpen(false);
+    setSelected(false);
  
   };
 

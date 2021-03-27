@@ -28,6 +28,7 @@ const styles = (theme) => ({
   },
 });
 
+
 const colorTheme = createMuiTheme({
   palette: {
     primary: {
@@ -129,8 +130,9 @@ export default function CustomizedDialogs(props) {
 
   return (
     <div>
-      <Button onClick = {handleClickOpen}>
-        <strong>{props.followType}:  </strong> {props.count} 
+      <Button onClick = {handleClickOpen} variant="outlined">
+        {props.followType}: &nbsp;
+        {props.count} 
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
       <DialogTitle id="customized-dialog-title" onClose={handleClose}>
