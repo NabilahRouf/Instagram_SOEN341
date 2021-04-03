@@ -1,11 +1,17 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
-import {AuthenticationContext} from './Authenticated';
+import {AuthenticationContext} from '../Authenticated';
 
 
 
-const user = null;
+const user = {
+  email: "abc@abc.com",
+  password: "abc123",
+  profile:"12345",
+  uid:"12345",
+  username: "lib"
+};
 
 
 const AllTheProviders = ({ children }) => {

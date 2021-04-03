@@ -1,14 +1,14 @@
 import React, {useState,useContext} from 'react';
-import ImageGrid from '../Components/ImageGrid'
-import Modal from '../Components/Modal'
+import ImageGrid from '../Components/Grids/ImageGrid'
+import Modal from '../Components/Modals/Modal'
 import './Profile.css';
 import Avatar from "@material-ui/core/Avatar";
-import {AuthenticationContext} from "../Authenticated";
-import {database} from "../firebase"
+import  { AuthenticationContext } from '../Firebase/Authenticated';
+import {database} from "../Firebase/firebase"
 import './PersonalProfile.css';
 import { makeStyles } from '@material-ui/core/styles';
-import HeaderProfile from '../Components/HeaderProfile';
-import ListModal from '../Components/ListModal';
+import HeaderProfile from '../Components/Headers/HeaderProfile';
+import ListModal from '../Components/Modals/ListModal';
 
 
 
@@ -69,8 +69,8 @@ const ProfilePage = () => {
                 <div>
                 <div className = "username"> {name} </div>
                     <div className ="follow">
-                        <ListModal followType = {"followers"} uid = {user.uid} count={userFollowersCount}/>&nbsp;
-                        <ListModal followType= {"following"} uid = {user.uid} count ={userFollowingCount}/>
+                        <ListModal followType = {"followers"} count={userFollowersCount}/>&nbsp;
+                        <ListModal followType= {"following"}  count ={userFollowingCount}/>
                     </div>
                 </div>                       
             </div>

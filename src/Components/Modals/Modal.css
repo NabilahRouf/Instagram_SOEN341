@@ -1,4 +1,4 @@
-.model-container{
+.modalContainer{
   position: fixed;
   top: 0px;
   width: 100%;
@@ -7,7 +7,7 @@
   background-color: rgba(0, 0, 0, 0.45);
 }
 
-.model{
+.modal{
   background-color: white;
   width: 1000px;
   height: 600px;
@@ -16,47 +16,47 @@
   display: flex;
 }
   
-.model-image{
+.modalImage{
   height: 600px;
   width: 500px;
   object-fit: cover;
 }
-.model-content-section{
+.modalContentSection{
   width: 100%;
 }
 
 
-.model-top-section-avatar{
+.modalTopSectionAvatar{
   width: 36px;
   height: 36px;
   margin-right: 10px;
 }
 
-.model-top-section-username{
+.modalTopSectionUsername{
   font-weight: 600;
   padding-right: 10px;
 }
 
-.model-spacer{
+.modalSpacer{
   flex: 1;
 }
 
-.model-caption-section{
+.modalCaptionSection{
   border: 1px solid lightgray;
 }
 
-.model-top-caption{
+.modalTopCaption{
   padding: 15px;
   display: flex;
   align-items: center;
 }
 
-.model-caption{
+.modalCaption{
   padding-left: 15px;
   padding-bottom: 15px;
 }
 
-.model-comment-timestamp{
+.modalCommentTimestamp{
   font-family: 'Open Sans', sans-serif;
   padding-top: 5px;
   padding-bottom: 10px;
@@ -67,12 +67,12 @@
   word-wrap: break-word;
 }
 
-.model-comments{
+.modalComments{
   height: 398px;
   padding: 15px;
   font-family: 'Open Sans', sans-serif; 
 }
-.model-comment-timestamp{
+.modalCommentTimestamp{
   font-family: 'Open Sans', sans-serif;
   padding-top: 5px;
   padding-bottom: 10px;
@@ -88,12 +88,12 @@
   justify-content: space-between;
 }
 
-.model-comment-box{
+.modalCommentBox{
   display: flex;
   margin-top: 10px;
 }
 
-.model-input{
+.modalInput{
   flex: 1;
   border: none;
   border-top: 1px solid lightgray;

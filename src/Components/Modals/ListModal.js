@@ -1,12 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import { createMuiTheme, withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import './UploadModal.css'
 import './UploadedForm.css'
-import '../Pages/Profile';
+import '../../Pages/Profile';
 import {useState} from 'react'
-import {database} from "../firebase";
+import {database} from "../../Firebase/firebase";
 import {List,ThemeProvider} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -14,6 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import {AuthenticationContext} from '../../Firebase/Authenticated';
 
 const styles = (theme) => ({
   root: {
@@ -59,7 +60,7 @@ const DialogContent = withStyles((theme) => ({
 
 export default function CustomizedDialogs(props) {
   const [open, setOpen] = React.useState(false);
-
+  const {user} = useContext(AuthenticationContext);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -69,7 +70,7 @@ export default function CustomizedDialogs(props) {
   };
   const [followList,setFollowList]=useState([]);
   useEffect(() => {
-    const unsubscribe = database.collection('users').doc(props.uid).collection(props.followType).onSnapshot(snapshot => {
+    const unsubscribe = database.collection('users').doc(user.uid).collection(props.followType).onSnapshot(snapshot => {
         let documents = [];
             snapshot.forEach((doc)=>{
                 if(props.followType === "followers"){
@@ -103,7 +104,7 @@ export default function CustomizedDialogs(props) {
     })
     console.log("useEffect ListModal");
     return () => {unsubscribe();}
-  }, [props.uid,props.followType])
+  }, [user.uid,props.followType])
 
   return (
     <div>

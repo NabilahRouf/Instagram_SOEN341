@@ -1,8 +1,8 @@
 import React,{useCallback,useContext} from 'react';
 import {Redirect} from "react-router";
-import {auth,database} from '../firebase';
-import SignUpBox from '../Components/SignUpBox';
-import {AuthenticationContext} from "../Authenticated";
+import {auth,database} from '../Firebase/firebase';
+import SignUpBox from '../Components/Forms/SignUpBox';
+import  { AuthenticationContext } from '../Firebase/Authenticated';
 
 const SignUpPage =()=> {
     document.title ='Stratus - Sign Up';
