@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import MainPage from '../Pages/Feed';
-import { AuthenticationContext } from '../Authenticated';
+import { AuthenticationContext } from '../Firebase/Authenticated';
+import '@testing-library/jest-dom';
 
 //Sum function is just a dummy test as test would fail if empty
 describe('Testing SignIn Page to Read App Name', () => {

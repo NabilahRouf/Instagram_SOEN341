@@ -1,10 +1,8 @@
 import React from 'react';
-import SignUpBox from '../Components/SignUpBox';
-import { act, render, screen,fireEvent} from "../SignUpTest-utils";
-import { getByText } from '@testing-library/react';
-import {auth,database} from '../firebase';
+import { act, render, screen,fireEvent} from "../TestUtilities/SignUpTest-utils";
+import {database} from '../Firebase/firebase';
 import SignUpPage from '../Pages/SignUp';
-import handleSignUp from '../Pages/SignUp'
+import '@testing-library/jest-dom';
 
 beforeEach(async () => {
   //const handleSignUp = jest.fn(e => e.preventDefault);
