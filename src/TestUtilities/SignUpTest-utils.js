@@ -1,17 +1,11 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
-import {AuthenticationContext} from './Authenticated';
+import {AuthenticationContext} from '../Firebase/Authenticated';
 
 
 
-const user = {
-  email: "abc@abc.com",
-  password: "abc123",
-  profile:"12345",
-  uid:"12345",
-  username: "lib"
-};
+const user = null;
 
 
 const AllTheProviders = ({ children }) => {

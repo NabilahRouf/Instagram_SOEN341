@@ -1,8 +1,8 @@
 import React,{useCallback,useContext} from 'react';
 import {Redirect} from "react-router";
-import {auth} from "../firebase"
-import SignInBox from '../Components/SignInBox';
-import {AuthenticationContext} from "../Authenticated";
+import {auth} from "../Firebase/firebase"
+import SignInBox from '../Components/Forms/SignInBox';
+import  { AuthenticationContext } from '../Firebase/Authenticated';
 
 
 const SignInPage =()=> {

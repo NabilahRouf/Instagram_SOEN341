@@ -1,9 +1,9 @@
 import React, { useState , useEffect, useContext } from 'react';
-import {database} from "../firebase"
-import Header from '../Components/Header'
+import {database} from "../Firebase/firebase"
+import Header from '../Components/Headers/Header'
 import './Feed.css';
-import PostLayout from '../Components/PostLayout';
-import  { AuthenticationContext } from '../Authenticated';
+import PostLayout from '../Components/Posts/PostLayout';
+import  { AuthenticationContext } from '../Firebase/Authenticated';
 
 const MainPage =() =>{
     const [posts, setPosts] = useState([]);

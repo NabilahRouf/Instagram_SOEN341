@@ -1,13 +1,13 @@
 import React from 'react'
 import './App.css';
 import {BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"; 
-import MainPage from "./Pages/Feed";
-import ErrorPage from "./Pages/Error";
-import SignUpPage from "./Pages/SignUp";
-import ProfilePage from "./Pages/Profile";
-import SignInPage from "./Pages/SignIn";
-import PersonalProfile from './Pages/PersonalProfile';
-import {AuthenticationProvider} from './Authenticated';
+import MainPage from "../Pages/Feed";
+import ErrorPage from "../Pages/Error";
+import SignUpPage from "../Pages/SignUp";
+import ProfilePage from "../Pages/Profile";
+import SignInPage from "../Pages/SignIn";
+import PersonalProfile from '../Pages/PersonalProfile';
+import  { AuthenticationProvider } from '../Firebase/Authenticated';
 import PrivateRoute from './PrivateRoute.js';
 
 

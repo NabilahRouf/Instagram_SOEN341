@@ -1,9 +1,9 @@
 import React from 'react';
 import ProfilePage from '../Pages/Profile';
-import ImageGrid from '../Components/ImageGrid';
-import { act, render, screen,fireEvent} from "../test-utils";
-import {database} from '../firebase';
-import { TramOutlined } from '@material-ui/icons';
+import ImageGrid from '../Components/Grids/ImageGrid';
+import { act, render, screen,fireEvent} from "../TestUtilities/test-utils";
+import {database} from '../Firebase/firebase';
+import '@testing-library/jest-dom';
 
 
 beforeEach(async () => {

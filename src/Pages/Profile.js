@@ -1,15 +1,15 @@
 import React, {useState,useContext,useEffect} from 'react';
-import ImageGrid from '../Components/ImageGrid'
-import Modal from '../Components/Modal'
-import HeaderProfile from '../Components/HeaderProfile'
+import ImageGrid from '../Components/Grids/ImageGrid'
+import Modal from '../Components/Modals/Modal'
+import HeaderProfile from '../Components/Headers/HeaderProfile'
 import './Profile.css';
 import './PersonalProfile.css';
-import {AuthenticationContext} from "../Authenticated";
-import {database} from "../firebase"
-import FollowButton from '../Components/FollowButton';
+import  { AuthenticationContext } from '../Firebase/Authenticated';
+import {database} from "../Firebase/firebase"
+import FollowButton from '../Components/ConditionalButtons/FollowButton';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from "@material-ui/core/Avatar";
-import ListModalProfile from '../Components/ListModalProfile';
+import ListModalProfile from '../Components/Modals/ListModalProfile';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -170,8 +170,8 @@ const ProfilePage = () => {
                         <div className="followButton" ><FollowButton selectedUserUid={selectedUserUid} isFollower={isFollower} follow={follow}/> </div>
                     </div>
                     <div className ="follow">
-                        <ListModalProfile followType = {"followers"} uid ={user.uid}  count={userFollowersCount}/>&nbsp;
-                        <ListModalProfile followType= {"following"} uid ={user.uid}  count ={userFollowingCount}/>
+                        <ListModalProfile followType = {"followers"} count={userFollowersCount}/>&nbsp;
+                        <ListModalProfile followType= {"following"} count ={userFollowingCount}/>
                     </div>
                 </div>                       
             </div>

@@ -2,13 +2,13 @@ import React, { useState, useEffect, useContext } from 'react'
 import './Modal.css';
 import Avatar from "@material-ui/core/Avatar";
 import { Button } from '@material-ui/core';
-import { database } from '../firebase';
+import { database } from '../../Firebase/firebase';
 import firebase from 'firebase';
 import moment from 'moment';
 import { ThemeProvider } from '@material-ui/core';
 import { createMuiTheme, withStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import  { AuthenticationContext } from '../Authenticated';
+import  { AuthenticationContext } from '../../Firebase/Authenticated';
 
 const Modal = ({selectedImg, setSelectedImg}) => {
 
@@ -72,55 +72,56 @@ const Modal = ({selectedImg, setSelectedImg}) => {
             });
             setComment('');
           }
-
-
-      const handleClick = (e) => {
-          if(e.target.classList.contains('model-container')) {
+    const handleClick = (e) => {
+          if(e.target.classList.contains('modalContainer')) {
               setSelectedImg(null);
+      }
     }
-}
-    return(
-    <div className = "model-container" onClick = {handleClick}>
 
-       <div className="model">
-           <img className = "model-image" src={selectedImg.imageUrl} alt="Enlarged"/>
-           <div className="model-content-section">
-                <div className = "model-caption-section">
-                    <div className="model-top-caption">
-                        <Avatar className="model-top-section-avatar" alt= {selectedImg.username} src="/static/images/avatar/1.jpg"  />  
-                        <div className="model-top-section-username"> {selectedImg.username} </div>
-                        <div className="model-spacer"/>
-                        <div className="model-timestamp">
+    return(
+    <div className = "modalContainer" onClick = {handleClick}>
+
+       <div className="modal">
+           <img className = "modalImage" src={selectedImg.imageUrl} alt="Enlarged"/>
+           <div className="modalContentSection">
+                <div className = "modalCaptionSection">
+                    <div className="modalTopCaption">
+                        <Avatar className="modalTopSectionAvatar" alt= {selectedImg.username} src="/static/images/avatar/1.jpg"  />  
+                        <div className="modalTopSectionUsername"> {selectedImg.username} </div>
+                        <div className="modalSpacer"/>
+                        <div className="modalTimestamp">
                         Posted on {moment(selectedImg.timestamp && selectedImg.timestamp.toDate()).format('MMMM Do YYYY, h:mm a')}
                         </div>
                     </div>
-                    <div className="model-caption">
+                    <div className="modalCaption">
                     {selectedImg.caption}
                     </div>
                 </div>
-                <div className = "model-comments">
+                <div className = "modalComments">
                     {comments.map(({id,comment}) => (
                     <div className="inLine" key={id}>
                         <div> <b> {comment.username} </b> {comment.text} </div>
-                        
-                        <div className="modal-comments-timestamp">{moment(comment.timestamp && comment.timestamp.toDate()).format('MMMM Do YYYY, h:mm a')} </div>
+                        <div className="modalCommentsTimestamp">{moment(comment.timestamp && comment.timestamp.toDate()).format('MMMM Do YYYY, h:mm a')} </div>
                     </div>
                     ))}
                 </div>
-                <div className="model-spacer"/>
-                <form className="model-comment-box">
+                <div className="modalSpacer"/>
+                <form className="modalCommentBox">
                         <ThemeProvider theme={theme}>
-                            <CssTextField
-                            className="model-input"
-                            id="outlined-basic"
-                            label="Comment"
-                            variant="outlined"
-                            color="primary"
-                            type="text"
-                            placeholder="Add a comment..."
-                            inputProps={{ maxLength: 70 }}
-                            value={comment}
-                            onChange={(e) => setComment(e.target.value)}
+                            <CssTextField onChange={event=>setComment(event.target.value)} value = {comment}
+                              autoFocus
+                              className="modalInput"
+                              type="text"
+                              placeholder="Add a comment..."
+                              id="comment"
+                              variant="outlined"
+                              label="Comment"
+                              color="primary"
+                              fullWidth
+                              inputProps={{
+                                maxLength: 70,
+                                'data-testid': 'comment'
+                              }}
                             />
 
                             <Button

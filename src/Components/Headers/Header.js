@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { fade, makeStyles,createMuiTheme, withStyles } from '@material-ui/core/styles';
 import { AppBar, IconButton , ThemeProvider, Toolbar} from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
-import UploadModal from '../Components/UploadModal';
-import {database} from '../firebase'
+import UploadModal from '../Modals/UploadModal';
+import {database} from  '../../Firebase/firebase';
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import {Redirect} from "react-router-dom";
-import {AuthenticationContext} from "../Authenticated";
-import Menu from '../Components/Menu'
+import  { AuthenticationContext } from '../../Firebase/Authenticated';
+import Menu from './Menu'
 
 const useStyles = makeStyles((theme)=>({
 

@@ -12,9 +12,9 @@ import PublishIcon from '@material-ui/icons/Publish';
 import './UploadModal.css'
 import './UploadedForm.css'
 import {useState, useContext} from 'react'
-import {firebaseStorage, database, timestamp} from "../firebase"
-import {AuthenticationContext} from "../Authenticated";
-import UploadButton from '../Components/UploadButton';
+import {firebaseStorage, database, timestamp} from  '../../Firebase/firebase';
+import  { AuthenticationContext } from '../../Firebase/Authenticated';
+import UploadButton from '../ConditionalButtons/UploadButton';
 import {ThemeProvider} from '@material-ui/core';
 
 const styles = (theme) => ({

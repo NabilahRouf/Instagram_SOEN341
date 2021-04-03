@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {database} from '../firebase';
+import {database} from '../../Firebase/firebase';
 import './ImageGrid.css';
 
 

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { AppBar, IconButton , Toolbar} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import HomeIcon from '@material-ui/icons/Home';
-import UploadModal from '../Components/UploadModal';
-import Menu from '../Components/Menu'
+import UploadModal from '../Modals/UploadModal';
+import Menu from './Menu'
 
 const useStyles = makeStyles(()=>({
 

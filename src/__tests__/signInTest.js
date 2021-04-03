@@ -1,11 +1,8 @@
 import React from 'react';
-//import { render, screen } from '@testing-library/react';
 import SignInPage from '../Pages/SignIn';
-import { AuthenticationContext } from '../Authenticated';
-
-import { act, render, screen,fireEvent} from "../SignUpTest-utils";
-import { getByText } from '@testing-library/react';
-import {auth,database} from '../firebase';
+import '@testing-library/jest-dom';
+import { act, render, screen,fireEvent} from "../TestUtilities/SignUpTest-utils";
+import {database} from '../Firebase/firebase';
 
 
 beforeEach(async () => {

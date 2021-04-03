@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './PostLayout.css';
 import Avatar from "@material-ui/core/Avatar";
 import moment from 'moment';
-import { database } from '../firebase';
+import { database } from '../../Firebase/firebase';
 import firebase from 'firebase';
 import TextField from '@material-ui/core/TextField';
 import { ThemeProvider } from '@material-ui/core';
