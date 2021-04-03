@@ -34,7 +34,7 @@ const ImageGrid = ({setSelectedImg, profile}) => {
          <div className = "imgGrid">
              {docs && docs.map((doc)=>(
                  <div className = "imgWrap" key = {doc.id}
-                  onClick= {() => setSelectedImg(doc.imageUrl)}
+                  onClick= {() => setSelectedImg(doc)}
                   >
         
                     

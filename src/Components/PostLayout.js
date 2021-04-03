@@ -42,7 +42,7 @@ function PostLayout({ postId , user , username, caption, imageUrl, timestamp }) 
 
   useEffect(() => {
     let unsubscribe
-    console.log("useeefect for comments")
+    console.log("useefect for comments for post layout")
     if(postId){
       unsubscribe = database
         .collection("posts")
@@ -104,9 +104,6 @@ const postComment = (event) => {
         
         ))}
       </div>
-
-
-
 
       <form className="postlayoutCommentBox">
 
