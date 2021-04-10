@@ -6,7 +6,6 @@ import './UploadModal.css'
 import './UploadedForm.css'
 import '../../Pages/Profile';
 import {useState} from 'react'
-import {database} from "../../Firebase/firebase";
 import {List,ThemeProvider} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ListItemText from '@material-ui/core/ListItemText';
