@@ -190,6 +190,9 @@ export default function Header(){
                     <ThemeProvider theme={theme}>
                         <CssTextField
                         {...params}
+                            inputProps={{
+                              'data-testid': 'searchBar'
+                            }}
                             label="Search Profile"
                             margin="normal"
                             variant="outlined"
@@ -197,7 +200,6 @@ export default function Header(){
                             color="primary"
                             className = {classes.textfieldCSS}
                             fullWidth
-                            // InputProps={{ ...params.InputProps, type: "search" }}
                         />
                     </ThemeProvider>
 
@@ -210,7 +212,7 @@ export default function Header(){
                   </div>
                     <UploadModal/>
                 
-                <IconButton >
+                <IconButton aria-label = "homeButtonHeader">
                     <Link to = "/feed">
                         <HomeIcon className= {classes.homeIcon}></HomeIcon>
                     </Link>

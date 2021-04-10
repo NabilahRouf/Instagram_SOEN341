@@ -1,20 +1,64 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen,fireEvent} from "../TestUtilities/test-utils";
 import MainPage from '../Pages/Feed';
-import { AuthenticationContext } from '../Firebase/Authenticated';
+import {database} from '../Firebase/firebase';
+import { getByText } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-//Sum function is just a dummy test as test would fail if empty
-describe('Testing SignIn Page to Read App Name', () => {
-    function sum(a, b) {
-        return a + b;
-     }
- 
-     it('should equal 4',()=>{
-        expect(sum(2,2)).toBe(4);
-       })
- 
-     test('also should equal 4', () => {
-         expect(sum(2,2)).toBe(4);
-       }) 
+
+beforeEach(async () => {
+  await database.enableNetwork();
+  await act(async () => {
+    render(<MainPage/>);
+  });
 });
+
+describe('Stratus Logo', () => {
+  test('Logo must have src = "/images/logo4.png" and alt = "stratusLogo"', () => {
+    const stratusLogo = screen.getByAltText('stratusLogoHeader');
+    expect(stratusLogo).toHaveAttribute('src', '/images/logo4.png');
+    expect(stratusLogo).toHaveAttribute('alt', 'stratusLogoHeader');
+  });
+});
+
+describe("Header Home Icon Clicked",() =>{
+
+  test('Home Button Works',() =>{
+    const homeIcon = screen.getByRole('button',{name: /homeButtonHeader/i});
+    expect(homeIcon).toBeInTheDocument();
+    fireEvent.click(homeIcon);
+  });
+});
+
+
+describe("Menu Click", () => {
+
+  test("renders menu button(Account Circle), then we try to click it",  () => {
+    const button = screen.getByRole('button',{name: "accountCircle"});
+    fireEvent.click(button);
+    const menuItem = screen.getByRole("menu");
+    expect(getByText(menuItem, "My Profile")).toBeTruthy();
+    expect(getByText(menuItem, "Logout")).toBeTruthy();
+  });
+});
+
+describe("Search bar", () => {
+
+  //afterEach(cleanup);
+  test("renders search, then we try to click it",  () => {
+    const searchBar = screen.getByTestId("searchBar")
+    fireEvent.change(searchBar, { target: { value: 'test' } });
+    expect(searchBar).toHaveValue('test');
+  });
+  
+  // test("renders search span button, then we try to click it",  () => {
+  //   const button = screen.getByRole('button',{name: "Open"});
+  //   expect(fireEvent.click(button)).toBeTruthy();
+  // });
+
+});
+
+afterEach(async () =>{
+  await database.disableNetwork();
+  jest.clearAllMocks();
+})
