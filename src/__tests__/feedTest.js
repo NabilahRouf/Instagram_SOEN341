@@ -46,15 +46,10 @@ describe("Search bar", () => {
 
   //afterEach(cleanup);
   test("renders search, then we try to click it",  () => {
-    const searchBar = screen.getByTestId("searchBar")
+    const searchBar = screen.getByRole('textbox',{name: /Search Profile/i})
     fireEvent.change(searchBar, { target: { value: 'test' } });
     expect(searchBar).toHaveValue('test');
   });
-  
-  // test("renders search span button, then we try to click it",  () => {
-  //   const button = screen.getByRole('button',{name: "Open"});
-  //   expect(fireEvent.click(button)).toBeTruthy();
-  // });
 
 });
 

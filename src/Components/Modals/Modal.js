@@ -89,21 +89,20 @@ const Modal = ({selectedImg, setSelectedImg}) => {
                         <Avatar className="modalTopSectionAvatar" alt= {selectedImg.username} src="/static/images/avatar/1.jpg"  />  
                         <div className="modalTopSectionUsername"> {selectedImg.username} </div>
                         <div className="modalSpacer"/>
-                        <div className="modalTimestamp">
-                        Posted on {moment(selectedImg.timestamp && selectedImg.timestamp.toDate()).format('MMMM Do YYYY, h:mm a')}
-                        </div>
                     </div>
                     <div className="modalCaption">
-                    {selectedImg.caption}
+                     {selectedImg.caption}
+                    </div>
+                    <div className="modalTimestamp">
+                        Posted on {moment(selectedImg.timestamp && selectedImg.timestamp.toDate()).format('MMMM Do YYYY, h:mm a')}
                     </div>
                 </div>
-                <div className = "modalComments">
-                    {comments.map(({id,comment}) => (
+                <div className = "modalComments" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>
+                    <p>{comments.map(({id,comment}) => (
                     <div className="inLine" key={id}>
                         <div> <b> {comment.username} </b> {comment.text} </div>
-                        <div className="modalCommentsTimestamp">{moment(comment.timestamp && comment.timestamp.toDate()).format('MMMM Do YYYY, h:mm a')} </div>
                     </div>
-                    ))}
+                    ))}</p>
                 </div>
                 <div className="modalSpacer"/>
                 <form className="modalCommentBox">
@@ -119,7 +118,7 @@ const Modal = ({selectedImg, setSelectedImg}) => {
                               color="primary"
                               fullWidth
                               inputProps={{
-                                maxLength: 70,
+                                maxLength: 30,
                                 'data-testid': 'comment'
                               }}
                             />

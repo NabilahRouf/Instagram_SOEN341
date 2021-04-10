@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 .modalContainer{
   position: fixed;
   top: 0px;
@@ -23,6 +25,7 @@
 }
 .modalContentSection{
   width: 100%;
+  position:relative;
 }
 
 
@@ -35,6 +38,7 @@
 .modalTopSectionUsername{
   font-weight: 600;
   padding-right: 10px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .modalSpacer{
@@ -43,6 +47,7 @@
 
 .modalCaptionSection{
   border: 1px solid lightgray;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .modalTopCaption{
@@ -52,35 +57,27 @@
 }
 
 .modalCaption{
-  padding-left: 15px;
-  padding-bottom: 15px;
+  padding-left: 1.2em;
+  word-break: break-word;
+  padding-bottom: 5px;
+  max-height: 40px;
+  overflow-y: auto;
+
 }
 
-.modalCommentTimestamp{
+.modalTimestamp{
   font-family: 'Open Sans', sans-serif;
-  padding-top: 5px;
+  font-size: 12px;
+  font-weight: 150;
+  padding-left: 1.5em;
   padding-bottom: 10px;
-  font-size: 13px;
-  padding-right: 2em;
-  max-width:100ch;
-  display: inline-block;
-  word-wrap: break-word;
 }
 
 .modalComments{
-  height: 398px;
+  max-height: 360px;
   padding: 15px;
-  font-family: 'Open Sans', sans-serif; 
-}
-.modalCommentTimestamp{
   font-family: 'Open Sans', sans-serif;
-  padding-top: 5px;
-  padding-bottom: 10px;
-  font-size: 13px;
-  padding-right: 2em;
-  max-width:100ch;
-  display: inline-block;
-  word-wrap: break-word;
+  overflow-y: auto;
 }
 
 .inLine {
@@ -91,6 +88,13 @@
 .modalCommentBox{
   display: flex;
   margin-top: 10px;
+  flex-wrap: wrap;
+  vertical-align: bottom;
+  position:absolute;
+  bottom:0;
+  right:0;
+  left:0;
+ 
 }
 
 .modalInput{

@@ -190,9 +190,7 @@ export default function Header(){
                     <ThemeProvider theme={theme}>
                         <CssTextField
                         {...params}
-                            inputProps={{
-                              'data-testid': 'searchBar'
-                            }}
+                            aria-label = "searchBar"
                             label="Search Profile"
                             margin="normal"
                             variant="outlined"
