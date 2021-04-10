@@ -51,6 +51,8 @@ const ProfilePage = () => {
     const [selectedUserUid,setSelectedUserUid] = useState('');
     const [followInvoked,setFollowInvoked] = useState(false);
     const [isFollower,setIsFollower] = useState(false);
+    const [following,setFollowing]=useState([]);
+    const [followers,setFollowers]=useState([]);
     const classes = useStyles();
 
     const follow = async() => {
@@ -137,8 +139,48 @@ const ProfilePage = () => {
                 setUserFollowingCount(document.followingCount);
                 setName(document.username);
                 
+                
+        let documents=[];
+        console.log(selectedUserUid);
+        
+        if(selectedUserUid){
+         database.collection('users').doc(selectedUserUid).collection('followers').get().then((snapshot) => {
+            snapshot.forEach((doc)=>{
+                const followerDoc= database.collection('users').doc(doc.data().followerId);
+                followerDoc.get().then(doc => {
+                  if (doc && doc.exists) {
+                    const follower={
+                      id: doc.id,
+                     username: doc.data().username,
+                  }
+                    documents.push(follower);
+                  }
+                }) 
+                
             })
         }).catch((error)=>{alert(error.message);})
+        setFollowers(documents);
+
+        let documentsFollowing=[];
+        database.collection('users').doc(selectedUserUid).collection('following').get().then((snapshot) => {
+            snapshot.forEach((doc)=>{
+                const followingDoc= database.collection('users').doc(doc.data().followingId);
+                followingDoc.get().then(doc => {
+                  if (doc && doc.exists) {
+                    const following={
+                      id: doc.id,
+                     username: doc.data().username,
+                  }
+                    documentsFollowing.push(following);
+                  }
+                }) 
+                
+            })
+        }).catch((error)=>{alert(error.message);})
+        setFollowing(documentsFollowing);}
+            })
+        }).catch((error)=>{alert(error.message);})
+
 
         database.collection('users').doc(user.uid).collection('following').where('followingId','==',selectedUserUid).get().then((snapshot)=>{
             if(!snapshot.empty){
@@ -170,8 +212,8 @@ const ProfilePage = () => {
                         <div className="followButton" ><FollowButton selectedUserUid={selectedUserUid} isFollower={isFollower} follow={follow}/> </div>
                     </div>
                     <div className ="follow">
-                        <ListModalProfile followType = {"followers"} count={userFollowersCount}/>&nbsp;
-                        <ListModalProfile followType= {"following"} count ={userFollowingCount}/>
+                        <ListModalProfile followType = {"followers"} count={userFollowersCount} followingArray={following} followersArray={followers}/>&nbsp;
+                        <ListModalProfile followType= {"following"} count ={userFollowingCount}  followingArray={following} followersArray={followers}/>
                     </div>
                 </div>                       
             </div>

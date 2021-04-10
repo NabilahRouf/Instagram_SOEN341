@@ -75,59 +75,12 @@ export default function CustomizedDialogs(props) {
   const {user} = useContext(AuthenticationContext);
   
   useEffect(() => {
-    const loadFollowingFolowers = async() => {
-       
-        const selectedUser = await database.collection('selectedUser').doc(user.uid).get().then(doc => {
-            if (doc && doc.exists) {
-               return doc.data().selectedUser;
-            }
-        });
-        console.log(selectedUser)
-        const selectedUserUid = await database.collection('users').where('username','==',selectedUser).get().then((snapshot) => {
-           let id = null;
-            snapshot.forEach((doc)=>{
-                id = doc.data().uid; 
-            })
-            return id;
-        }).catch((error)=>{alert(error.message);})
-        console.log(selectedUserUid)
-        const unsubscribe = database.collection('users').doc(selectedUserUid).collection(props.followType).onSnapshot(snapshot => {
-            let documents = [];
-                snapshot.forEach((doc)=>{
-                    if(props.followType === "followers"){
-                      const followTypeItem= database.collection('users').doc(doc.data().followerId);
-                      followTypeItem.get().then(doc => {
-                        if (doc && doc.exists) {
-                          const follower={
-                            id: doc.id,
-                           username: doc.data().username,
-                        }
-                          documents.push(follower);
-                        }
-                      }) 
-                    }
-                    else{
-                      const followTypeItem= database.collection('users').doc(doc.data().followingId);
-                      followTypeItem.get().then(doc => {
-                        if (doc && doc.exists) {
-                          const following={
-                            id: doc.id,
-                           username: doc.data().username,
-                        }
-                          documents.push(following);
-                        }
-                      }) 
-                    }
-                    
-                });
-                 setFollowList(documents);       
-        })
-        return () => {unsubscribe();}
+    if(props.followType === "followers"){
+      setFollowList(props.followersArray);
     }
-    loadFollowingFolowers();
-    console.log("useEffect ListModal");
+    else{setFollowList(props.followingArray);}
     
-  }, [user.uid,props.followType])
+  }, [user.uid,props.followType,props.followersArray,props.followingArray])
 
   return (
     <div>
