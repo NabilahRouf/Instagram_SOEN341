@@ -19,7 +19,7 @@ The core features are:
 3. Leaving comments to an uploaded picture
 
 An additional feauture: <br />
-&nbsp;&nbsp;&nbsp;&nbsp;4. TBD
+&nbsp;&nbsp;&nbsp;&nbsp;4. User Profile (Followers List, Following List, Post Grid on a Profile Page)
 
 ## Languages 
 
