@@ -129,68 +129,66 @@ const ProfilePage = () => {
         database.collection('selectedUser').doc(user.uid).get().then((doc)=>{
             
             setSelectedUser(doc.data().selectedUser);
+            database.collection('users').where('username','==',selectedUser).get().then((snapshot) => {
+                snapshot.forEach((doc)=>{
+                    const document = doc.data();
+                    setSelectedUserUid(document.uid);
+                    setUserFollowersCount(document.followersCount);
+                    setUserFollowingCount(document.followingCount);
+                    setName(document.username);
+                    
+                    
+            let documents=[];
+            console.log(selectedUserUid);
+            
+            if(selectedUserUid){
+             database.collection('users').doc(selectedUserUid).collection('followers').get().then((snapshot) => {
+                snapshot.forEach((doc)=>{
+                    const followerDoc= database.collection('users').doc(doc.data().followerId);
+                    followerDoc.get().then(doc => {
+                      if (doc && doc.exists) {
+                        const follower={
+                          id: doc.id,
+                         username: doc.data().username,
+                      }
+                        documents.push(follower);
+                      }
+                    }) 
+                    
+                })
+            }).catch((error)=>{alert(error.message);})
+            setFollowers(documents);
+    
+            let documentsFollowing=[];
+            database.collection('users').doc(selectedUserUid).collection('following').get().then((snapshot) => {
+                snapshot.forEach((doc)=>{
+                    const followingDoc= database.collection('users').doc(doc.data().followingId);
+                    followingDoc.get().then(doc => {
+                      if (doc && doc.exists) {
+                        const following={
+                          id: doc.id,
+                         username: doc.data().username,
+                      }
+                        documentsFollowing.push(following);
+                      }
+                    }) 
+                    
+                })
+            }).catch((error)=>{alert(error.message);})
+            setFollowing(documentsFollowing);}
+                })
+
+                database.collection('users').doc(user.uid).collection('following').where('followingId','==',selectedUserUid).get().then((snapshot)=>{
+                    if(!snapshot.empty){
+                        setIsFollower(true);
+                    }
+                    else{
+                        setIsFollower(false);
+                    }
+                     
+                }).catch((error)=>{alert(error.message);})
+            }).catch((error)=>{alert(error.message);})
         }).catch((error) => {console.log("Error getting document:", error);});
-        
-        database.collection('users').where('username','==',selectedUser).get().then((snapshot) => {
-            snapshot.forEach((doc)=>{
-                const document = doc.data();
-                setSelectedUserUid(document.uid);
-                setUserFollowersCount(document.followersCount);
-                setUserFollowingCount(document.followingCount);
-                setName(document.username);
-                
-                
-        let documents=[];
-        console.log(selectedUserUid);
-        
-        if(selectedUserUid){
-         database.collection('users').doc(selectedUserUid).collection('followers').get().then((snapshot) => {
-            snapshot.forEach((doc)=>{
-                const followerDoc= database.collection('users').doc(doc.data().followerId);
-                followerDoc.get().then(doc => {
-                  if (doc && doc.exists) {
-                    const follower={
-                      id: doc.id,
-                     username: doc.data().username,
-                  }
-                    documents.push(follower);
-                  }
-                }) 
-                
-            })
-        }).catch((error)=>{alert(error.message);})
-        setFollowers(documents);
-
-        let documentsFollowing=[];
-        database.collection('users').doc(selectedUserUid).collection('following').get().then((snapshot) => {
-            snapshot.forEach((doc)=>{
-                const followingDoc= database.collection('users').doc(doc.data().followingId);
-                followingDoc.get().then(doc => {
-                  if (doc && doc.exists) {
-                    const following={
-                      id: doc.id,
-                     username: doc.data().username,
-                  }
-                    documentsFollowing.push(following);
-                  }
-                }) 
-                
-            })
-        }).catch((error)=>{alert(error.message);})
-        setFollowing(documentsFollowing);}
-            })
-        }).catch((error)=>{alert(error.message);})
-
-
-        database.collection('users').doc(user.uid).collection('following').where('followingId','==',selectedUserUid).get().then((snapshot)=>{
-            if(!snapshot.empty){
-                setIsFollower(true);
-            }
-            else{
-                setIsFollower(false);
-            }
-             
-        }).catch((error)=>{alert(error.message);})
         
         console.log("useEffect Profile");
         
