@@ -137,12 +137,17 @@ export default function Header(){
     const[username, setUsername]=useState('');
     const{user} = useContext(AuthenticationContext);
     const onSelectChange = (event,value) => {
-      database.collection('selectedUser').doc(user.uid).set({
+      setSelectedUser(value);  
+    }
+
+    const setSelectedUser = async(value) => {
+      await database.collection('selectedUser').doc(user.uid).set({
         selectedUser: value
-    })
-    setUsername(value); 
-    console.log("chose user");  
-      }
+      })
+      setUsername(value); 
+      console.log("chose user");
+    };
+
 
       //load all users
       useEffect(() => {
